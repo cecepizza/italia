@@ -246,12 +246,16 @@
                 <li><strong>Review Together</strong> - Dad can review the wishlist and we can plan visits to top choices</li>
             </ol>
             <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                <h3>🆕 NEW: Collaborative Family Wishlist!</h3>
-                <p><strong>Perfect for family property research:</strong></p>
-                <a href="collaborative_wishlist.html" target="_blank" style="background: #4caf50; color: white; padding: 15px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">
-                    ❤️ Open Family Wishlist
-                </a>
-                <p style="margin: 15px 0 0 0; font-size: 14px;"><em>Share this link with all family members so everyone can add properties they find!</em></p>
+                <h3>🆕 Smart Property URL Parser!</h3>
+                <p><strong>Simply paste property URLs and get auto-populated details:</strong></p>
+                <ul style="margin: 10px 0;">
+                    <li>🏘️ Auto-detects town and region</li>
+                    <li>🏖️ Estimates beach and airport distances</li>
+                    <li>👴 Grandpa review tracking</li>
+                    <li>📍 Organized by region</li>
+                    <li>🔥 Family hotness ratings</li>
+                </ul>
+                <p style="margin: 15px 0 0 0; font-size: 14px;"><em>Perfect for collaborative family property research!</em></p>
             </div>
         </div>
 
@@ -1055,31 +1059,71 @@
         <div id="wishlist" class="tab-content">
             <div class="wishlist-section">
                 <h2>❤️ Dad's Property Wishlist</h2>
-                <p>Properties and towns the family has added for Dad to review. Perfect for planning our Italy trip!</p>
+                <p>Drop property URLs and let the system auto-populate details!</p>
                 
-                <div style="background: white; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                    <h3>📝 Add Custom Property to Wishlist</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 2fr auto; gap: 10px; align-items: end;">
-                        <input type="text" id="custom-region" placeholder="Region (e.g. Puglia)" style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                        <input type="text" id="custom-town" placeholder="Town Name" style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                        <input type="text" id="custom-notes" placeholder="Property details, price, URL, notes..." style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                        <button onclick="addCustomToWishlist()" class="search-btn">Add to Wishlist</button>
-                    </div>
+                <div class="wishlist-form">
+                    <h3>🔗 Smart Property URL Parser</h3>
+                    <form id="smart-property-form">
+                        <div class="form-row">
+                            <input type="url" id="property-url" placeholder="Paste property URL from Immobiliare.it, Casa.it, etc." class="form-full" required style="padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
+                        </div>
+                        
+                        <div class="form-row">
+                            <select id="hotness" required style="padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
+                                <option value="">How hot is this property? 🌡️</option>
+                                <option value="🔥">🔥 MUST SEE! (Top priority)</option>
+                                <option value="🌟">🌟 Looks Great!</option>
+                                <option value="👍">👍 Pretty Good</option>
+                                <option value="🤔">🤔 Maybe Worth It</option>
+                                <option value="👎">👎 Not Impressed</option>
+                            </select>
+                            
+                            <select id="region-override" style="padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
+                                <option value="">Region (auto-detected or specify)</option>
+                                <option value="Puglia">📍 Puglia</option>
+                                <option value="Calabria">📍 Calabria</option>
+                                <option value="Sicily">📍 Sicily</option>
+                                <option value="Liguria">📍 Liguria</option>
+                                <option value="Other">📍 Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <select id="added-by" required style="padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
+                                <option value="">Who found this? 👨‍👩‍👧‍👦</option>
+                                <option value="C">👩 C</option>
+                                <option value="J">👨 J</option>
+                                <option value="L">👧 L</option>
+                                <option value="K">👦 K</option>
+                                <option value="E">👤 E</option>
+                            </select>
+                            
+                            <button type="button" onclick="parsePropertyURL()" style="background: #2196f3; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                                🔍 Parse URL & Preview
+                            </button>
+                        </div>
+                        
+                        <div id="property-preview" style="display: none; background: #f0f8ff; padding: 20px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #2196f3;">
+                            <!-- Auto-populated property details will appear here -->
+                        </div>
+                        
+                        <textarea id="notes" placeholder="Additional notes or observations..." rows="3" class="form-full" style="padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; resize: vertical;"></textarea>
+                        
+                        <button type="submit" style="background: #4caf50; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px;">
+                            ❤️ Add to Dad's Wishlist
+                        </button>
+                    </form>
                 </div>
                 
                 <div id="wishlist-items">
-                    <!-- Wishlist items will be populated by JavaScript -->
+                    <!-- Wishlist items grouped by region will appear here -->
                 </div>
                 
                 <div style="margin-top: 30px; padding: 20px; background: #e8f5e8; border-radius: 10px;">
-                    <h3>📊 Next Steps</h3>
-                    <ul>
-                        <li>Share this wishlist with Dad for review</li>
-                        <li>Plan virtual tours of top properties</li>
-                        <li>Research flights to nearest airports</li>
-                        <li>Contact real estate agents for favorites</li>
-                        <li>Schedule Italy trip to visit finalists</li>
-                    </ul>
+                    <h3>📊 Quick Stats</h3>
+                    <div id="wishlist-stats">
+                        <!-- Stats will be populated by JavaScript -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -1139,7 +1183,9 @@
     </div>
 
     <script>
+        // Enhanced wishlist system with URL parsing
         let wishlist = [];
+        let currentPropertyData = null;
         
         function showTab(tabName) {
             // Hide all tabs
@@ -1151,8 +1197,136 @@
             event.target.classList.add('active');
             
             if (tabName === 'wishlist') {
+                loadWishlist();
                 displayWishlist();
             }
+        }
+        
+        // Load/save wishlist from localStorage
+        function loadWishlist() {
+            try {
+                const saved = localStorage.getItem('italianPropertyWishlist');
+                if (saved) {
+                    wishlist = JSON.parse(saved);
+                }
+            } catch (e) {
+                console.log('Could not load wishlist');
+            }
+        }
+        
+        function saveWishlist() {
+            localStorage.setItem('italianPropertyWishlist', JSON.stringify(wishlist));
+        }
+        
+        // Smart URL parser for Italian real estate sites
+        async function parsePropertyURL() {
+            const url = document.getElementById('property-url').value;
+            const preview = document.getElementById('property-preview');
+            
+            if (!url) {
+                alert('Please enter a property URL first');
+                return;
+            }
+            
+            preview.innerHTML = '<div style="text-align: center; padding: 20px;">🔍 Analyzing URL...</div>';
+            preview.style.display = 'block';
+            
+            // Extract info from URL patterns
+            const propertyData = extractPropertyDataFromURL(url);
+            
+            // Display preview
+            preview.innerHTML = `
+                <h4>🏡 Property Analysis</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div><strong>🏘️ Town:</strong> ${propertyData.town}</div>
+                    <div><strong>📍 Region:</strong> ${propertyData.region}</div>
+                    <div><strong>💰 Price:</strong> ${propertyData.price}</div>
+                    <div><strong>📐 Size:</strong> ${propertyData.size}</div>
+                    <div><strong>🏖️ Beach:</strong> ${propertyData.beachDistance}</div>
+                    <div><strong>✈️ Airport:</strong> ${propertyData.airportAccess}</div>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <strong>✅ Auto-detected details ready!</strong> Add your hotness rating and notes below.
+                </div>
+            `;
+            
+            // Auto-select region if detected
+            const regionSelect = document.getElementById('region-override');
+            if (propertyData.region && !regionSelect.value) {
+                regionSelect.value = propertyData.region;
+            }
+            
+            currentPropertyData = propertyData;
+        }
+        
+        function extractPropertyDataFromURL(url) {
+            let town = 'Unknown Town';
+            let region = 'Unknown Region';
+            let price = 'Price not detected';
+            let size = 'Size not detected';
+            let beachDistance = 'Check manually';
+            let airportAccess = 'Check manually';
+            
+            // Parse different Italian real estate sites
+            if (url.includes('immobiliare.it')) {
+                // Extract from Immobiliare.it URL patterns
+                const urlParts = url.split('/');
+                for (let i = 0; i < urlParts.length; i++) {
+                    if (urlParts[i].includes('-')) {
+                        const parts = urlParts[i].split('-');
+                        if (parts.length > 1) {
+                            town = parts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
+                            break;
+                        }
+                    }
+                }
+                
+                // Detect region from URL or common patterns
+                if (url.includes('puglia') || url.includes('bari') || url.includes('andria') || url.includes('monopoli') || url.includes('polignano')) {
+                    region = 'Puglia';
+                    beachDistance = '5-15 min walk (typical Puglia coast)';
+                    airportAccess = '30-60 min to Bari Airport';
+                } else if (url.includes('calabria') || url.includes('tropea') || url.includes('pizzo') || url.includes('crotone')) {
+                    region = 'Calabria';
+                    beachDistance = '5-10 min walk (typical Calabria coast)';
+                    airportAccess = '30-90 min to Lamezia Terme';
+                } else if (url.includes('sicilia') || url.includes('catania') || url.includes('palermo') || url.includes('cefalu')) {
+                    region = 'Sicily';
+                    beachDistance = '5-15 min walk (typical Sicily coast)';
+                    airportAccess = '15-60 min to major airport';
+                }
+            } else if (url.includes('casa.it')) {
+                // Parse Casa.it patterns
+                if (url.includes('puglia')) {
+                    region = 'Puglia';
+                    beachDistance = '5-15 min walk (Puglia coastal)';
+                    airportAccess = '30-60 min to Bari';
+                }
+                // Extract town from Casa.it URL if possible
+                const match = url.match(/localita=([^&]+)/);
+                if (match) {
+                    town = decodeURIComponent(match[1].replace(/\+/g, ' '));
+                }
+            }
+            
+            // Try to extract price from URL parameters
+            const priceMatch = url.match(/prezzo[^=]*=([^&]+)/);
+            if (priceMatch) {
+                price = '€' + priceMatch[1];
+            }
+            
+            return {
+                url: url,
+                town: town,
+                region: region,
+                price: price,
+                size: size,
+                beachDistance: beachDistance,
+                airportAccess: airportAccess,
+                site: url.includes('immobiliare.it') ? 'Immobiliare.it' : 
+                      url.includes('casa.it') ? 'Casa.it' : 
+                      url.includes('idealista.it') ? 'Idealista.it' : 'Other'
+            };
         }
         
         function toggleRegion(regionName) {
@@ -1200,31 +1374,223 @@
             document.getElementById('custom-notes').value = '';
         }
         
-        function removeFromWishlist(index) {
-            wishlist.splice(index, 1);
-            saveWishlist();
-            displayWishlist();
+        // Form submission handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('smart-property-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const url = document.getElementById('property-url').value;
+                    const hotness = document.getElementById('hotness').value;
+                    const regionOverride = document.getElementById('region-override').value;
+                    const addedBy = document.getElementById('added-by').value;
+                    const notes = document.getElementById('notes').value;
+                    
+                    if (!url || !hotness || !addedBy) {
+                        alert('Please fill in URL, hotness rating, and who added it');
+                        return;
+                    }
+                    
+                    if (!currentPropertyData) {
+                        alert('Please parse the URL first using the "Parse URL & Preview" button');
+                        return;
+                    }
+                    
+                    // Create property object
+                    const property = {
+                        id: Date.now(),
+                        url: url,
+                        town: currentPropertyData.town,
+                        region: regionOverride || currentPropertyData.region,
+                        price: currentPropertyData.price,
+                        size: currentPropertyData.size,
+                        beachDistance: currentPropertyData.beachDistance,
+                        airportAccess: currentPropertyData.airportAccess,
+                        site: currentPropertyData.site,
+                        hotness: hotness,
+                        addedBy: addedBy,
+                        notes: notes,
+                        dateAdded: new Date().toLocaleDateString(),
+                        timeAdded: new Date().toLocaleTimeString(),
+                        grandpaReviewed: false
+                    };
+                    
+                    wishlist.unshift(property);
+                    saveWishlist();
+                    
+                    alert('✅ Added to Dad\\'s wishlist: ' + property.town + ', ' + property.region);
+                    
+                    // Reset form
+                    this.reset();
+                    document.getElementById('property-preview').style.display = 'none';
+                    currentPropertyData = null;
+                    
+                    displayWishlist();
+                });
+            }
+            
+            // Load wishlist on page load
+            loadWishlist();
+        });
+        
+        function removeProperty(id) {
+            if (confirm('Remove this property from Dad\\'s wishlist?')) {
+                wishlist = wishlist.filter(p => p.id !== id);
+                saveWishlist();
+                displayWishlist();
+            }
+        }
+        
+        function toggleGrandpaReview(id) {
+            const property = wishlist.find(p => p.id === id);
+            if (property) {
+                property.grandpaReviewed = !property.grandpaReviewed;
+                saveWishlist();
+                displayWishlist();
+            }
         }
         
         function displayWishlist() {
             const container = document.getElementById('wishlist-items');
+            const statsContainer = document.getElementById('wishlist-stats');
+            
+            if (!container) return; // Guard clause for when tab isn't loaded yet
             
             if (wishlist.length === 0) {
-                container.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;"><h3>No items in wishlist yet</h3><p>Browse regions and towns, then click "Add to Wishlist" buttons!</p></div>';
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #666;">
+                        <h3>No properties yet!</h3>
+                        <p>Start by pasting a property URL above and parsing it.</p>
+                    </div>
+                `;
+                if (statsContainer) {
+                    statsContainer.innerHTML = '<p>No properties to analyze yet.</p>';
+                }
                 return;
             }
             
-            let html = '<h3>📋 ' + wishlist.length + ' Items for Dad to Review:</h3>';
+            // Group by region
+            const regions = {};
+            wishlist.forEach(property => {
+                if (!regions[property.region]) {
+                    regions[property.region] = [];
+                }
+                regions[property.region].push(property);
+            });
             
-            wishlist.forEach((item, index) => {
+            // Generate stats
+            const totalProperties = wishlist.length;
+            const reviewedByGrandpa = wishlist.filter(p => p.grandpaReviewed).length;
+            const byHotness = {
+                '🔥': wishlist.filter(p => p.hotness === '🔥').length,
+                '🌟': wishlist.filter(p => p.hotness === '🌟').length,
+                '👍': wishlist.filter(p => p.hotness === '👍').length,
+                '🤔': wishlist.filter(p => p.hotness === '🤔').length,
+                '👎': wishlist.filter(p => p.hotness === '👎').length
+            };
+            
+            if (statsContainer) {
+                statsContainer.innerHTML = `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                        <div><strong>📊 Total:</strong> ${totalProperties}</div>
+                        <div><strong>👴 Reviewed:</strong> ${reviewedByGrandpa}</div>
+                        <div><strong>🔥 Must See:</strong> ${byHotness['🔥']}</div>
+                        <div><strong>🌟 Great:</strong> ${byHotness['🌟']}</div>
+                        <div><strong>👍 Good:</strong> ${byHotness['👍']}</div>
+                    </div>
+                `;
+            }
+            
+            // Sort regions and render
+            let html = '';
+            Object.keys(regions).sort().forEach(regionName => {
+                const regionProperties = regions[regionName];
+                const reviewedInRegion = regionProperties.filter(p => p.grandpaReviewed).length;
+                
+                // Sort properties: reviewed first, then by hotness, then by date
+                const sortedProperties = regionProperties.sort((a, b) => {
+                    if (a.grandpaReviewed !== b.grandpaReviewed) {
+                        return b.grandpaReviewed - a.grandpaReviewed;
+                    }
+                    
+                    const hotnessOrder = { '🔥': 5, '🌟': 4, '👍': 3, '🤔': 2, '👎': 1 };
+                    if (hotnessOrder[a.hotness] !== hotnessOrder[b.hotness]) {
+                        return hotnessOrder[b.hotness] - hotnessOrder[a.hotness];
+                    }
+                    
+                    return b.id - a.id;
+                });
+                
                 html += `
-                    <div class="wishlist-item">
-                        <div>
-                            <h4 style="margin: 0 0 10px 0; color: #ff6b6b;">${item.town}, ${item.region}</h4>
-                            <p style="margin: 5px 0;"><strong>Notes:</strong> ${item.notes}</p>
-                            <p style="margin: 5px 0; font-size: 12px; color: #666;">Added by ${item.added_by} on ${item.date_added}</p>
+                    <div style="margin-bottom: 40px; border: 2px solid #e0e0e0; border-radius: 15px; overflow: hidden;">
+                        <div style="background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 24px; font-weight: bold;">📍 ${regionName}</div>
+                            <div style="font-size: 14px; opacity: 0.9;">
+                                ${regionProperties.length} properties<br>
+                                ${reviewedInRegion} reviewed by Grandpa 👴
+                            </div>
                         </div>
-                        <button class="remove-btn" onclick="removeFromWishlist(${index})">Remove</button>
+                        <div style="padding: 20px;">
+                `;
+                
+                sortedProperties.forEach(property => {
+                    html += `
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin: 15px 0; border: 1px solid #e0e0e0; position: relative; ${property.grandpaReviewed ? 'border: 3px solid #4caf50; background: #f8fff8;' : ''}">
+                            <button onclick="removeProperty(${property.id})" style="background: #f44336; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; position: absolute; top: 10px; right: 10px; font-size: 12px;">Remove</button>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; color: #ff6b6b;">${property.town}, ${property.region}</h4>
+                                    <div style="font-size: 12px; color: #666;">
+                                        Added by ${property.addedBy} • ${property.dateAdded} • ${property.site || 'Manual'}
+                                    </div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-size: 24px; margin-bottom: 5px;">${property.hotness || '🤔'}</div>
+                                    <div style="font-size: 12px; color: #666;">Family Rating</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 10px; margin: 15px 0; padding: 15px; background: #e8f5e8; border-radius: 8px; border-left: 4px solid #4caf50;">
+                                <input type="checkbox" style="width: 20px; height: 20px; cursor: pointer;" ${property.grandpaReviewed ? 'checked' : ''} onchange="toggleGrandpaReview(${property.id})">
+                                <span style="font-weight: bold; color: #4caf50;">👴 ${property.grandpaReviewed ? 'Grandpa has reviewed this property ✅' : 'Waiting for Grandpa to review'}</span>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+                                <div style="background: #f0f8ff; padding: 10px; border-radius: 5px;">
+                                    <div style="font-size: 12px; font-weight: bold; color: #666;">💰 PRICE</div>
+                                    <div>${property.price || 'Unknown'}</div>
+                                </div>
+                                <div style="background: #f0f8ff; padding: 10px; border-radius: 5px;">
+                                    <div style="font-size: 12px; font-weight: bold; color: #666;">🏖️ BEACH</div>
+                                    <div>${property.beachDistance || 'Unknown'}</div>
+                                </div>
+                                <div style="background: #f0f8ff; padding: 10px; border-radius: 5px;">
+                                    <div style="font-size: 12px; font-weight: bold; color: #666;">✈️ AIRPORT</div>
+                                    <div>${property.airportAccess || 'Unknown'}</div>
+                                </div>
+                            </div>
+                            
+                            ${property.url ? `
+                                <div style="background: #fff3e0; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                    <strong>🔗 Property Link:</strong><br>
+                                    <a href="${property.url}" target="_blank" style="color: #ff6b6b; word-break: break-all;">${property.url}</a>
+                                </div>
+                            ` : ''}
+                            
+                            ${property.notes ? `
+                                <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                    <strong>📝 Notes:</strong><br>
+                                    ${property.notes}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+                
+                html += `
+                        </div>
                     </div>
                 `;
             });
@@ -1233,9 +1599,7 @@
         }
         
         function saveWishlist() {
-            // In a real app, this would save to a server
-            // For now, it just updates the local variable
-            console.log('Wishlist saved:', wishlist);
+            localStorage.setItem('italianPropertyWishlist', JSON.stringify(wishlist));
         }
         
         // Initialize
