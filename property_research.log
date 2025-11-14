@@ -1,0 +1,69 @@
+2025-11-14 10:54:53,033 - INFO - Starting property search...
+2025-11-14 10:54:53,033 - INFO - Searching properties in Crotone, Calabria
+2025-11-14 10:54:53,746 - WARNING - Failed to fetch from Immobiliare.it for Crotone, Calabria: 403
+2025-11-14 10:54:53,746 - INFO - Found 0 properties in Crotone, Calabria
+2025-11-14 10:54:53,746 - INFO - Filtered to 0 matching properties
+2025-11-14 10:54:55,750 - INFO - Searching properties in Catania, Sicily
+2025-11-14 10:54:55,930 - WARNING - Failed to fetch from Immobiliare.it for Catania, Sicily: 403
+2025-11-14 10:54:55,931 - INFO - Found 0 properties in Catania, Sicily
+2025-11-14 10:54:55,931 - INFO - Filtered to 0 matching properties
+2025-11-14 10:54:57,935 - INFO - Searching properties in Andria, Puglia
+2025-11-14 10:54:58,117 - WARNING - Failed to fetch from Immobiliare.it for Andria, Puglia: 403
+2025-11-14 10:54:58,117 - INFO - Found 0 properties in Andria, Puglia
+2025-11-14 10:54:58,118 - INFO - Filtered to 0 matching properties
+2025-11-14 10:55:00,119 - INFO - Searching properties in Rodi Garganico, Puglia
+2025-11-14 10:55:00,296 - WARNING - Failed to fetch from Immobiliare.it for Rodi Garganico, Puglia: 403
+2025-11-14 10:55:00,297 - INFO - Found 0 properties in Rodi Garganico, Puglia
+2025-11-14 10:55:00,297 - INFO - Filtered to 0 matching properties
+2025-11-14 10:55:02,300 - INFO - No properties found matching criteria
+2025-11-14 10:55:02,301 - INFO - Property search completed
+2025-11-14 10:56:00,346 - INFO - Starting property search...
+2025-11-14 10:56:00,346 - INFO - Searching properties in Crotone, Calabria
+2025-11-14 10:56:00,830 - WARNING - Failed to fetch from Immobiliare.it for Crotone, Calabria: 403
+2025-11-14 10:56:00,830 - INFO - Found 0 properties in Crotone, Calabria
+2025-11-14 10:56:00,830 - INFO - Filtered to 0 matching properties
+2025-11-14 10:56:02,833 - INFO - Searching properties in Catania, Sicily
+2025-11-14 10:56:03,080 - WARNING - Failed to fetch from Immobiliare.it for Catania, Sicily: 403
+2025-11-14 10:56:03,081 - INFO - Found 0 properties in Catania, Sicily
+2025-11-14 10:56:03,081 - INFO - Filtered to 0 matching properties
+2025-11-14 10:56:05,085 - INFO - Searching properties in Andria, Puglia
+2025-11-14 10:56:05,298 - WARNING - Failed to fetch from Immobiliare.it for Andria, Puglia: 403
+2025-11-14 10:56:05,298 - INFO - Found 0 properties in Andria, Puglia
+2025-11-14 10:56:05,299 - INFO - Filtered to 0 matching properties
+2025-11-14 10:56:07,300 - INFO - Searching properties in Rodi Garganico, Puglia
+2025-11-14 10:56:07,493 - WARNING - Failed to fetch from Immobiliare.it for Rodi Garganico, Puglia: 403
+2025-11-14 10:56:07,493 - INFO - Found 0 properties in Rodi Garganico, Puglia
+2025-11-14 10:56:07,493 - INFO - Filtered to 0 matching properties
+2025-11-14 10:56:09,498 - INFO - No properties found matching criteria
+2025-11-14 10:56:09,498 - INFO - Property search completed
+2025-11-14 11:02:03,978 - INFO - Starting property search...
+2025-11-14 11:02:03,978 - INFO - Searching properties in Crotone, Calabria
+2025-11-14 11:02:04,750 - WARNING - Failed to fetch from Immobiliare.it for Crotone, Calabria: 403
+2025-11-14 11:02:04,750 - INFO - Found 0 properties from Immobiliare.it in Crotone, Calabria
+2025-11-14 11:02:06,311 - WARNING - Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+2025-11-14 11:02:06,313 - INFO - Found 0 properties from Casa.it in Crotone, Calabria
+2025-11-14 11:02:06,313 - INFO - Total properties found in Crotone, Calabria: 0
+2025-11-14 11:02:06,313 - INFO - Filtered to 0 matching properties
+2025-11-14 11:02:08,316 - INFO - Searching properties in Catania, Sicily
+2025-11-14 11:02:08,526 - WARNING - Failed to fetch from Immobiliare.it for Catania, Sicily: 403
+2025-11-14 11:02:08,526 - INFO - Found 0 properties from Immobiliare.it in Catania, Sicily
+2025-11-14 11:02:10,241 - WARNING - Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+2025-11-14 11:02:10,243 - INFO - Found 0 properties from Casa.it in Catania, Sicily
+2025-11-14 11:02:10,243 - INFO - Total properties found in Catania, Sicily: 0
+2025-11-14 11:02:10,243 - INFO - Filtered to 0 matching properties
+2025-11-14 11:02:12,244 - INFO - Searching properties in Andria, Puglia
+2025-11-14 11:02:12,509 - WARNING - Failed to fetch from Immobiliare.it for Andria, Puglia: 403
+2025-11-14 11:02:12,510 - INFO - Found 0 properties from Immobiliare.it in Andria, Puglia
+2025-11-14 11:02:13,754 - WARNING - Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+2025-11-14 11:02:13,757 - INFO - Found 0 properties from Casa.it in Andria, Puglia
+2025-11-14 11:02:13,757 - INFO - Total properties found in Andria, Puglia: 0
+2025-11-14 11:02:13,757 - INFO - Filtered to 0 matching properties
+2025-11-14 11:02:15,758 - INFO - Searching properties in Rodi Garganico, Puglia
+2025-11-14 11:02:15,971 - WARNING - Failed to fetch from Immobiliare.it for Rodi Garganico, Puglia: 403
+2025-11-14 11:02:15,971 - INFO - Found 0 properties from Immobiliare.it in Rodi Garganico, Puglia
+2025-11-14 11:02:15,987 - WARNING - Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+2025-11-14 11:02:15,990 - INFO - Found 0 properties from Casa.it in Rodi Garganico, Puglia
+2025-11-14 11:02:15,991 - INFO - Total properties found in Rodi Garganico, Puglia: 0
+2025-11-14 11:02:15,991 - INFO - Filtered to 0 matching properties
+2025-11-14 11:02:17,993 - INFO - No properties found matching criteria
+2025-11-14 11:02:17,994 - INFO - Property search completed
