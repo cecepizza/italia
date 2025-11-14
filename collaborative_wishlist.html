@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🏡 Family Property Wishlist - Collaborative</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .header { 
+            background: linear-gradient(135deg, #ff6b6b, #ffa726); 
+            color: white; 
+            padding: 30px; 
+            text-align: center; 
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .add-form {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-full {
+            grid-column: 1 / -1;
+        }
+        input, textarea, select {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .submit-btn {
+            background: #4caf50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .submit-btn:hover { background: #45a049; }
+        .wishlist-items {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .wishlist-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fafafa;
+            position: relative;
+        }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .item-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        .item-meta {
+            font-size: 12px;
+            color: #666;
+            text-align: right;
+        }
+        .item-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .detail-item {
+            background: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #2196f3;
+        }
+        .detail-label {
+            font-weight: bold;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .detail-value {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .notes {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ff9800;
+        }
+        .property-url {
+            background: #e8f5e8;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        .property-url a {
+            color: #4caf50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .remove-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #2196f3;
+        }
+        .share-section {
+            background: #f0f8ff;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 25px;
+        }
+        .share-url {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px dashed #667eea;
+            font-family: monospace;
+            font-size: 18px;
+            color: #667eea;
+            font-weight: bold;
+            margin: 15px 0;
+            word-break: break-all;
+        }
+        @media (max-width: 768px) {
+            .form-row { grid-template-columns: 1fr; }
+            .item-details { grid-template-columns: 1fr; }
+            .item-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>❤️ Dad's Italian Property Wishlist</h1>
+            <p>Collaborative Family Property Research</p>
+        </div>
+
+        <div class="instructions">
+            <h3>📋 How This Works</h3>
+            <p><strong>Perfect for family collaboration!</strong> Everyone can add properties they find, and everything saves automatically. Share this URL with your family so everyone can contribute:</p>
+            <div class="share-url" id="current-url">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <p><em>Bookmark this page and send the URL to family members. All additions will appear for everyone instantly!</em></p>
+        </div>
+
+        <div class="add-form">
+            <h2>➕ Add Property to Dad's Wishlist</h2>
+            <form id="property-form">
+                <div class="form-row">
+                    <input type="text" id="region" placeholder="Region (e.g., Puglia, Calabria)" required>
+                    <input type="text" id="town" placeholder="Town Name" required>
+                </div>
+                
+                <div class="form-row">
+                    <input type="text" id="price" placeholder="Price (e.g., €180,000)">
+                    <input type="text" id="size" placeholder="Size (e.g., 120 sqm, 3 bed)">
+                </div>
+                
+                <div class="form-row">
+                    <input type="text" id="distance-beach" placeholder="Distance to beach (e.g., 5 min walk)">
+                    <input type="text" id="distance-airport" placeholder="Airport access (e.g., 1 hr to Bari)">
+                </div>
+                
+                <div class="form-row">
+                    <input type="text" id="added-by" placeholder="Your name" required>
+                    <select id="priority" required>
+                        <option value="">Priority Level</option>
+                        <option value="high">🔥 Must See!</option>
+                        <option value="medium">👍 Interesting</option>
+                        <option value="low">🤔 Maybe</option>
+                    </select>
+                </div>
+                
+                <input type="url" id="property-url" placeholder="Property URL (paste link from real estate site)" class="form-full">
+                
+                <textarea id="notes" placeholder="Notes: What makes this property special? Pros/cons? Why does dad need to see this?" rows="4" class="form-full" required></textarea>
+                
+                <button type="submit" class="submit-btn">❤️ Add to Dad's Wishlist</button>
+            </form>
+        </div>
+
+        <div class="wishlist-items">
+            <h2 id="wishlist-title">📋 Dad's Property Wishlist</h2>
+            <div id="wishlist-container">
+                <!-- Properties will be added here -->
+            </div>
+        </div>
+
+        <div class="share-section">
+            <h3>📱 Share This Wishlist</h3>
+            <p>Send this URL to family members so they can add properties too:</p>
+            <div class="share-url" id="share-url">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <p><strong>💡 Tip:</strong> Everyone should bookmark this page for easy access during property research!</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple collaborative storage using URL hash
+        class CollaborativeWishlist {
+            constructor() {
+                this.wishlist = [];
+                this.loadFromURL();
+                this.displayURL();
+                this.displayWishlist();
+                this.setupForm();
+                
+                // Update display every few seconds to catch changes from other family members
+                setInterval(() => {
+                    this.loadFromURL();
+                    this.displayWishlist();
+                }, 5000);
+            }
+            
+            loadFromURL() {
+                try {
+                    const hash = window.location.hash.substring(1);
+                    if (hash) {
+                        const decoded = decodeURIComponent(hash);
+                        const data = JSON.parse(atob(decoded));
+                        this.wishlist = data.items || [];
+                    }
+                } catch (e) {
+                    console.log('No existing wishlist data');
+                }
+            }
+            
+            saveToURL() {
+                const data = { items: this.wishlist, updated: new Date().toISOString() };
+                const encoded = btoa(JSON.stringify(data));
+                window.location.hash = encodeURIComponent(encoded);
+                this.displayURL();
+            }
+            
+            displayURL() {
+                const currentURL = window.location.href;
+                document.getElementById('current-url').textContent = currentURL;
+                document.getElementById('share-url').textContent = currentURL;
+            }
+            
+            addProperty(propertyData) {
+                const property = {
+                    id: Date.now(),
+                    region: propertyData.region,
+                    town: propertyData.town,
+                    price: propertyData.price,
+                    size: propertyData.size,
+                    distanceBeach: propertyData.distanceBeach,
+                    distanceAirport: propertyData.distanceAirport,
+                    propertyUrl: propertyData.propertyUrl,
+                    notes: propertyData.notes,
+                    addedBy: propertyData.addedBy,
+                    priority: propertyData.priority,
+                    dateAdded: new Date().toLocaleDateString(),
+                    timeAdded: new Date().toLocaleTimeString()
+                };
+                
+                this.wishlist.unshift(property); // Add to beginning
+                this.saveToURL();
+                this.displayWishlist();
+                
+                // Show success message
+                alert('✅ Added to Dad\\'s wishlist: ' + property.town + ', ' + property.region);
+                
+                // Clear form
+                document.getElementById('property-form').reset();
+            }
+            
+            removeProperty(id) {
+                if (confirm('Remove this property from Dad\\'s wishlist?')) {
+                    this.wishlist = this.wishlist.filter(prop => prop.id !== id);
+                    this.saveToURL();
+                    this.displayWishlist();
+                }
+            }
+            
+            displayWishlist() {
+                const container = document.getElementById('wishlist-container');
+                const title = document.getElementById('wishlist-title');
+                
+                if (this.wishlist.length === 0) {
+                    container.innerHTML = `
+                        <div style="text-align: center; padding: 40px; color: #666;">
+                            <h3>No properties yet!</h3>
+                            <p>Start adding properties above for Dad to review.</p>
+                        </div>
+                    `;
+                    title.textContent = '📋 Dad\\'s Property Wishlist (Empty)';
+                    return;
+                }
+                
+                title.textContent = `📋 Dad's Property Wishlist (${this.wishlist.length} properties)`;
+                
+                // Sort by priority and date
+                const sortedList = [...this.wishlist].sort((a, b) => {
+                    const priorityOrder = { high: 3, medium: 2, low: 1 };
+                    if (priorityOrder[a.priority] !== priorityOrder[b.priority]) {
+                        return priorityOrder[b.priority] - priorityOrder[a.priority];
+                    }
+                    return b.id - a.id; // Most recent first
+                });
+                
+                container.innerHTML = sortedList.map(property => `
+                    <div class="wishlist-item">
+                        <button class="remove-btn" onclick="wishlist.removeProperty(${property.id})">Remove</button>
+                        
+                        <div class="item-header">
+                            <div class="item-title">${property.town}, ${property.region}</div>
+                            <div class="item-meta">
+                                Added by ${property.addedBy}<br>
+                                ${property.dateAdded} at ${property.timeAdded}<br>
+                                <strong style="color: ${property.priority === 'high' ? '#f44336' : property.priority === 'medium' ? '#ff9800' : '#4caf50'}">
+                                    ${property.priority === 'high' ? '🔥 MUST SEE!' : property.priority === 'medium' ? '👍 INTERESTING' : '🤔 MAYBE'}
+                                </strong>
+                            </div>
+                        </div>
+                        
+                        <div class="item-details">
+                            ${property.price ? `
+                                <div class="detail-item">
+                                    <div class="detail-label">Price</div>
+                                    <div class="detail-value">${property.price}</div>
+                                </div>
+                            ` : ''}
+                            ${property.size ? `
+                                <div class="detail-item">
+                                    <div class="detail-label">Size</div>
+                                    <div class="detail-value">${property.size}</div>
+                                </div>
+                            ` : ''}
+                            ${property.distanceBeach ? `
+                                <div class="detail-item">
+                                    <div class="detail-label">Beach Access</div>
+                                    <div class="detail-value">${property.distanceBeach}</div>
+                                </div>
+                            ` : ''}
+                            ${property.distanceAirport ? `
+                                <div class="detail-item">
+                                    <div class="detail-label">Airport Access</div>
+                                    <div class="detail-value">${property.distanceAirport}</div>
+                                </div>
+                            ` : ''}
+                        </div>
+                        
+                        ${property.propertyUrl ? `
+                            <div class="property-url">
+                                <strong>🔗 Property Link:</strong><br>
+                                <a href="${property.propertyUrl}" target="_blank">${property.propertyUrl}</a>
+                            </div>
+                        ` : ''}
+                        
+                        <div class="notes">
+                            <strong>📝 Notes:</strong><br>
+                            ${property.notes}
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            setupForm() {
+                document.getElementById('property-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const formData = {
+                        region: document.getElementById('region').value,
+                        town: document.getElementById('town').value,
+                        price: document.getElementById('price').value,
+                        size: document.getElementById('size').value,
+                        distanceBeach: document.getElementById('distance-beach').value,
+                        distanceAirport: document.getElementById('distance-airport').value,
+                        propertyUrl: document.getElementById('property-url').value,
+                        notes: document.getElementById('notes').value,
+                        addedBy: document.getElementById('added-by').value,
+                        priority: document.getElementById('priority').value
+                    };
+                    
+                    // Validation
+                    if (!formData.region || !formData.town || !formData.notes || !formData.addedBy || !formData.priority) {
+                        alert('Please fill in all required fields (marked with *)');
+                        return;
+                    }
+                    
+                    this.addProperty(formData);
+                });
+            }
+        }
+        
+        // Initialize wishlist
+        const wishlist = new CollaborativeWishlist();
+        
+        // Copy URL function
+        function copyURL() {
+            navigator.clipboard.writeText(window.location.href);
+            alert('✅ URL copied! Send this to your family members.');
+        }
+        
+        // Add copy buttons
+        document.querySelectorAll('.share-url').forEach(el => {
+            el.style.cursor = 'pointer';
+            el.title = 'Click to copy URL';
+            el.addEventListener('click', copyURL);
+        });
+    </script>
+</body>
+</html>
