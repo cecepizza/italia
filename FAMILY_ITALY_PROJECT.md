@@ -1,5 +1,6 @@
 # 🇮🇹 Our Italian Property Adventure
-*A Complete Family Research & Automation Toolkit*
+
+_A Complete Family Research & Automation Toolkit_
 
 ---
 
@@ -8,42 +9,50 @@
 We're building a comprehensive system to help our family find the perfect Italian property! Here's what we've created and what's ready to use.
 
 ### **🏘️ Target Locations**
+
 - **Crotone, Calabria** - Authentic Southern Italy, very affordable
-- **Catania, Sicily** - Major city with airport, more amenities  
+- **Catania, Sicily** - Major city with airport, more amenities
 - **Andria, Puglia** - Growing popularity with foreign buyers
 - **Rodi Garganico, Puglia** - Beautiful Gargano peninsula location
 
 ### **💰 Budget Range**
-**€150,000 - €400,000** *(~$165k - $440k USD)*
+
+**€150,000 - €400,000** _(~$165k - $440k USD)_
 
 ---
 
 ## 🚀 **What's Ready to Use RIGHT NOW**
 
 ### 📋 **1. Manual Search Guide**
+
 **File:** `italian_property_guide_20251114.html`
 
 ✅ **What it does:**
+
 - Pre-configured search links for all major Italian property sites
 - Organized by town with direct "Search Now" buttons
 - Built-in translation tips and Italian real estate vocabulary
 - Family coordination checklist
 
 ✅ **How to use:**
+
 1. Open the HTML file in your browser
 2. Click "Search Now" for any town that interests you
 3. Browse properties and save interesting ones
 4. Use the research worksheet to track your findings
 
 ### 📝 **2. Research Worksheet Template**
+
 **File:** `property_research_worksheet_20251114.md`
 
 ✅ **What it does:**
+
 - Structured template for tracking property discoveries
 - Space for notes, prices, conditions, and next steps
 - Helps ensure we collect consistent information
 
 ✅ **How to use:**
+
 1. Make a copy for each family member
 2. Fill out as you research properties
 3. Share findings in our family group chat
@@ -51,30 +60,67 @@ We're building a comprehensive system to help our family find the perfect Italia
 
 ---
 
-## 🤖 **Automated Tools (Ready to Deploy)**
+## 🌐 **Public Website (What We Actually Use)**
 
-### 🏠 **Property Research Engine**
-**File:** `property_research.py`
+### 🏡 **Family Property Portal**
 
-✅ **What it does:**
-- Automatically searches Immobiliare.it and Casa.it
-- Filters properties by our budget and criteria
-- Translates Italian descriptions to English
-- Tracks price changes over time
-- Generates beautiful HTML reports with photos
-- Sends weekly email digests to the family
-
-✅ **Status:** Ready but currently blocked by website protections (common issue)
-- Will automatically work when sites are more permissive
-- Can run daily/weekly once functional
-
-### 📊 **URL Collector**
-**Files:** `property_collector.py`, `manual_search_guide.py`
+**Live Site:** https://cecepizza.github.io/italia
 
 ✅ **What it does:**
-- Generates direct search URLs for all property sites
-- Creates family-friendly guides with instructions
-- Provides backup manual research methods
+
+- Interactive portal with regions and towns
+- Direct links to Italian real estate sites (Immobiliare.it, Casa.it, Idealista.it, Subito.it)
+- Pre-configured search URLs with budget filters
+- Collaborative wishlist for family members
+- URL parser that auto-detects property details when you paste links
+- Dad's review system to track which properties he's seen
+
+✅ **How to use:**
+
+1. Visit the website: https://cecepizza.github.io/italia
+2. Browse regions (Puglia, Calabria, Sicily, Liguria)
+3. Click on towns to see details and search links
+4. Click property search buttons to open Italian real estate sites
+5. When you find a property you like, paste the URL into the wishlist
+6. The system auto-detects town, region, and other details
+7. Family members can rate properties and track Dad's reviews
+
+### 📋 **Collaborative Wishlist**
+
+**File:** `collaborative_wishlist.html` (also embedded in main site)
+
+✅ **What it does:**
+
+- Family members add properties by pasting URLs
+- Auto-detects town and region from property URLs
+- Stores data in browser (localStorage) - no server needed
+- Family can rate properties with emoji (🔥, 🌟, 👍, 🤔, 👎)
+- Dad can mark properties as reviewed
+- Organizes by region automatically
+
+---
+
+## 🤖 **Experimental/Optional Tools** (Not Currently Used)
+
+### 🏠 **Property Scraping Scripts**
+
+**Files:** `property_research.py`, `property_collector.py`
+
+⚠️ **Status:** Experimental - Not currently needed
+
+- We have direct links to property sites, so scraping isn't necessary
+- Blocked by website anti-bot protection anyway
+- Keeping for future reference, but not actively used
+
+### 📊 **Guide Generators**
+
+**Files:** `manual_search_guide.py`, `family_property_portal.py`, `coastal_property_guide.py`
+
+✅ **What they do:**
+
+- Generate HTML files with search links
+- Used to create the static HTML guides
+- Not needed for day-to-day use (already generated)
 
 ---
 
@@ -82,21 +128,37 @@ We're building a comprehensive system to help our family find the perfect Italia
 
 ```
 🇮🇹 Italia Property Project/
-├── 🌐 italian_property_guide_20251114.html      # ← START HERE!
-├── 📋 property_research_worksheet_20251114.md    # ← TRACK FINDINGS
-├── 🤖 property_research.py                      # Automated scraper
-├── 🔧 property_collector.py                     # URL collector
-├── 📋 manual_search_guide.py                    # Guide generator
-├── ⚙️ requirements.txt                          # Python dependencies
-├── 📖 setup_property_research.md                # Setup instructions
-├── 💾 Database files (auto-created):
-│   ├── properties.db                            # Property database
-│   ├── property_cache.sqlite                    # Web cache
-│   └── property_research.log                    # Activity log
-└── 📊 Reports (auto-generated):
-    ├── property_report_YYYYMMDD.html            # Weekly reports
-    └── property_urls_YYYYMMDD.csv               # URL collections
+├── 🌐 index.html                                # ← MAIN SITE (Deployed!)
+├── 🌐 collaborative_wishlist.html               # ← WISHLIST PAGE
+├── 🌐 family_property_portal_20251114.html      # Generated portal
+├── 🌐 italian_property_guide_20251114.html      # Generated guide
+├── 🌐 coastal_property_guide_20251114.html      # Generated guide
+│
+├── 📋 property_research_worksheet_20251114.md   # Research template
+├── 📖 FAMILY_ITALY_PROJECT.md                   # This file
+├── 📖 README.md                                 # Project overview
+│
+├── 🐍 family_property_portal.py                 # Portal generator (optional)
+├── 🐍 manual_search_guide.py                    # Guide generator (optional)
+├── 🐍 coastal_property_guide.py                 # Guide generator (optional)
+│
+├── 🤖 property_research.py                      # Experimental scraper (unused)
+├── 🤖 property_collector.py                     # Experimental collector (unused)
+├── 🧪 test_scraper.py                           # Test script (unused)
+│
+└── ⚙️ requirements.txt                          # Python deps (only if using generators)
 ```
+
+**What You Actually Use:**
+
+- ✅ `index.html` - Main family portal (live at GitHub Pages)
+- ✅ `collaborative_wishlist.html` - Family wishlist
+- ✅ Property search links (embedded in the site)
+
+**Optional/Experimental:**
+
+- 🤖 Python scraping scripts (not needed, sites have direct links)
+- 🐍 HTML generators (already generated, only needed if updating)
 
 ---
 
@@ -104,46 +166,50 @@ We're building a comprehensive system to help our family find the perfect Italia
 
 ### **For Everyone (No Technical Skills Needed)**
 
-1. **📱 Open the Manual Search Guide**
-   - Double-click `italian_property_guide_20251114.html`
+1. **🌐 Visit the Family Portal**
+
+   - Go to: https://cecepizza.github.io/italia
    - Bookmark it in your browser
-   - Start exploring properties in your favorite town
+   - Browse regions and towns
+   - Click property search buttons to open Italian real estate sites
 
-2. **📝 Use the Research Worksheet**
-   - Copy `property_research_worksheet_20251114.md`
-   - Track 3-5 interesting properties per research session
-   - Share your findings in our family group
+2. **❤️ Add Properties to Wishlist**
 
-3. **🗓️ Weekly Family Check-ins**
-   - Compare everyone's discoveries
-   - Vote on properties to investigate further
+   - When you find a property you like, copy its URL
+   - Go to the "Dad's Wishlist" tab on the site
+   - Paste the URL and click "Parse URL & Preview"
+   - Fill in your rating and notes
+   - Click "Add to Dad's Wishlist"
+
+3. **👨 Review Together**
+
+   - Dad can mark properties as reviewed
+   - Family can rate properties with emoji
+   - All data saves automatically in your browser
+   - Share the site URL with family members to collaborate
+
+4. **🗓️ Weekly Family Check-ins**
+   - Review the wishlist together
+   - Discuss top-rated properties
    - Plan virtual tours or agent contacts
+   - Remove properties that don't work out
 
 ### **For the Tech-Savvy Family Members**
 
-1. **🐍 Set Up the Automation (Optional)**
-   ```bash
-   cd italia-project
-   python3 -m venv property_env
-   source property_env/bin/activate
-   pip install -r requirements.txt
-   ```
+**No setup needed!** Everything works in the browser.
 
-2. **⚙️ Configure Email Alerts**
-   - Edit `property_research.py` 
-   - Add your Gmail app password
-   - Set family email addresses
+If you want to modify or regenerate the HTML files:
 
-3. **🚀 Run Automated Search**
-   ```bash
-   python3 property_research.py
-   ```
+1. The Python scripts (`family_property_portal.py`, etc.) generate the HTML
+2. Run them to regenerate guides if needed
+3. The main site (`index.html`) is already deployed and working
 
 ---
 
 ## 🔄 **Planned Automation Features**
 
-### 🎯 **Phase 1: Property Research** ✅ *COMPLETE*
+### 🎯 **Phase 1: Property Research** ✅ _COMPLETE_
+
 - [x] Multi-site property scraping
 - [x] Price filtering and tracking
 - [x] Translation capabilities
@@ -151,6 +217,7 @@ We're building a comprehensive system to help our family find the perfect Italia
 - [x] Manual search guide
 
 ### 📍 **Phase 2: Location Research** (Next)
+
 - [ ] Crime statistics for each town
 - [ ] Hospital and healthcare info
 - [ ] Internet speed reports
@@ -158,12 +225,14 @@ We're building a comprehensive system to help our family find the perfect Italia
 - [ ] Expat community finder
 
 ### ✈️ **Phase 3: Travel Planning** (Future)
+
 - [ ] Flight price monitoring to Italy
 - [ ] Airbnb finder for each town
 - [ ] Route optimization for property visits
 - [ ] Real estate agent contact lists
 
 ### 📱 **Phase 4: Family Tools** (Future)
+
 - [ ] Interactive property map
 - [ ] Family voting system for properties
 - [ ] WhatsApp/SMS bot for quick queries
@@ -174,18 +243,21 @@ We're building a comprehensive system to help our family find the perfect Italia
 ## 💡 **Family Research Strategy**
 
 ### **Week 1-2: Initial Discovery**
+
 - Everyone picks one town to champion
 - Use the manual search guide to find 10+ interesting properties
 - Fill out research worksheets
 - Share discoveries in family group
 
 ### **Week 3-4: Deep Dive Research**
+
 - Research neighborhoods and amenities
 - Contact real estate agents for promising properties
 - Price analysis and market research
 - Create shortlist of "must-see" properties
 
 ### **Week 5-6: Trip Planning**
+
 - Plan Italy scouting trip itinerary
 - Schedule property viewings
 - Book accommodations and flights
@@ -196,18 +268,21 @@ We're building a comprehensive system to help our family find the perfect Italia
 ## 🎯 **Success Metrics**
 
 **By Month 1:**
+
 - [ ] 50+ properties researched across all towns
 - [ ] 10+ promising properties identified
 - [ ] 3-5 real estate agent contacts made
 - [ ] Trip itinerary planned
 
 **By Month 2:**
+
 - [ ] Italy scouting trip completed
 - [ ] 2-3 serious property candidates identified
 - [ ] Legal/financial process understood
 - [ ] Purchase timeline established
 
 **By Month 3:**
+
 - [ ] Property purchase negotiations
 - [ ] Legal documentation in progress
 - [ ] Moving/renovation planning begun
@@ -216,14 +291,17 @@ We're building a comprehensive system to help our family find the perfect Italia
 
 ## 📞 **Family Coordination**
 
-### **Weekly Check-ins** 
-*Every Sunday 7 PM*
+### **Weekly Check-ins**
+
+_Every Sunday 7 PM_
+
 - Share week's property discoveries
 - Discuss most interesting finds
 - Assign research tasks for next week
 - Update trip planning progress
 
 ### **Shared Resources**
+
 - **Group Chat:** Daily property sharing
 - **Shared Spreadsheet:** Master property tracking
 - **Photo Album:** Property and town photos
@@ -233,19 +311,19 @@ We're building a comprehensive system to help our family find the perfect Italia
 
 ## 🔗 **Useful Italian Real Estate Terms**
 
-| Italian | English | Notes |
-|---------|---------|-------|
-| **vendita** | for sale | Most important search term |
-| **casa** | house | Single-family home |
-| **appartamento** | apartment | Condo/flat |
-| **villa** | villa | Larger property with grounds |
-| **locali** | rooms | Total rooms (incl. bedrooms) |
-| **camere** | bedrooms | Sleeping rooms only |
-| **mq** | square meters | Size measurement |
-| **abitabile** | livable | Move-in ready |
-| **da ristrutturare** | needs renovation | Fixer-upper |
-| **ristrutturato** | renovated | Recently updated |
-| **centro storico** | historic center | Old town area |
+| Italian              | English          | Notes                        |
+| -------------------- | ---------------- | ---------------------------- |
+| **vendita**          | for sale         | Most important search term   |
+| **casa**             | house            | Single-family home           |
+| **appartamento**     | apartment        | Condo/flat                   |
+| **villa**            | villa            | Larger property with grounds |
+| **locali**           | rooms            | Total rooms (incl. bedrooms) |
+| **camere**           | bedrooms         | Sleeping rooms only          |
+| **mq**               | square meters    | Size measurement             |
+| **abitabile**        | livable          | Move-in ready                |
+| **da ristrutturare** | needs renovation | Fixer-upper                  |
+| **ristrutturato**    | renovated        | Recently updated             |
+| **centro storico**   | historic center  | Old town area                |
 
 ---
 
@@ -258,5 +336,5 @@ Share everything in our family group and let's make this adventure unforgettable
 
 ---
 
-*🤖 Generated with love by Claude Code*  
-*Last updated: November 14, 2024*
+_🤖 Generated with love by Claude Code_  
+_Last updated: November 14, 2024_
