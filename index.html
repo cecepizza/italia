@@ -1218,8 +1218,8 @@
             localStorage.setItem('italianPropertyWishlist', JSON.stringify(wishlist));
         }
         
-        // Smart URL parser for Italian real estate sites
-        async function parsePropertyURL() {
+        // Smart URL parser for Italian real estate sites - make it globally available
+        window.parsePropertyURL = async function() {
             const url = document.getElementById('property-url').value;
             const preview = document.getElementById('property-preview');
             
@@ -1257,7 +1257,7 @@
             }
             
             currentPropertyData = propertyData;
-        }
+        };
         
         function extractPropertyDataFromURL(url) {
             let town = 'Unknown Town';
@@ -1329,14 +1329,40 @@
             };
         }
         
-        function toggleRegion(regionName) {
+        window.toggleRegion = function(regionName) {
             const townDiv = document.getElementById(regionName + '-towns');
-            if (townDiv.style.display === 'none') {
+            if (townDiv && townDiv.style.display === 'none') {
                 townDiv.style.display = 'block';
-            } else {
+            } else if (townDiv) {
                 townDiv.style.display = 'none';
             }
-        }
+        };
+        
+        window.addToWishlist = function(region, town, notes) {
+            // Legacy function for region exploration buttons
+            const item = {
+                id: Date.now(),
+                region: region,
+                town: town,
+                notes: notes,
+                addedBy: 'Family',
+                dateAdded: new Date().toLocaleDateString(),
+                grandpaReviewed: false,
+                hotness: '🤔',
+                url: '',
+                price: 'Unknown',
+                beachDistance: 'Unknown',
+                airportAccess: 'Unknown'
+            };
+            
+            wishlist.push(item);
+            saveWishlist();
+            alert('✅ Added to Dad\\'s wishlist: ' + town + ', ' + region);
+            
+            if (document.getElementById('wishlist').classList.contains('active')) {
+                displayWishlist();
+            }
+        };
         
         function addToWishlist(region, town, notes) {
             const item = {
@@ -1434,22 +1460,22 @@
             loadWishlist();
         });
         
-        function removeProperty(id) {
+        window.removeProperty = function(id) {
             if (confirm('Remove this property from Dad\\'s wishlist?')) {
                 wishlist = wishlist.filter(p => p.id !== id);
                 saveWishlist();
                 displayWishlist();
             }
-        }
+        };
         
-        function toggleGrandpaReview(id) {
+        window.toggleGrandpaReview = function(id) {
             const property = wishlist.find(p => p.id === id);
             if (property) {
                 property.grandpaReviewed = !property.grandpaReviewed;
                 saveWishlist();
                 displayWishlist();
             }
-        }
+        };
         
         function displayWishlist() {
             const container = document.getElementById('wishlist-items');
@@ -1602,22 +1628,22 @@
             localStorage.setItem('italianPropertyWishlist', JSON.stringify(wishlist));
         }
         
-        // Initialize
-        displayWishlist();
-        
-        // Add click tracking
-        document.querySelectorAll('.search-btn').forEach(btn => {
-            if (!btn.onclick) { // Don't override wishlist buttons
-                btn.addEventListener('click', function() {
-                    this.style.background = '#2e7d32';
-                    const originalText = this.innerHTML;
-                    this.innerHTML = '✅ Opening...';
-                    setTimeout(() => {
-                        this.innerHTML = originalText;
-                        this.style.background = '#4caf50';
-                    }, 2000);
-                });
-            }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click tracking for search buttons
+            document.querySelectorAll('.search-btn').forEach(btn => {
+                if (!btn.onclick && !btn.hasAttribute('onclick')) { // Don't override existing handlers
+                    btn.addEventListener('click', function() {
+                        this.style.background = '#2e7d32';
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '✅ Opening...';
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.style.background = '#4caf50';
+                        }, 2000);
+                    });
+                }
+            });
         });
     </script>
 </body>
