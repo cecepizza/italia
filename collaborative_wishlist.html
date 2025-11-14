@@ -67,6 +67,31 @@
             padding: 25px;
             margin-bottom: 25px;
         }
+        .region-section {
+            margin-bottom: 40px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .region-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .region-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .region-stats {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .region-properties {
+            padding: 20px;
+        }
         .wishlist-item {
             border: 1px solid #e0e0e0;
             border-radius: 10px;
@@ -143,6 +168,64 @@
             position: absolute;
             top: 10px;
             right: 10px;
+        }
+        .ranking-section {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff9c4;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+        .ranking-btn {
+            background: #f5f5f5;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        .ranking-btn:hover {
+            transform: scale(1.1);
+            border-color: #667eea;
+        }
+        .ranking-btn.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: scale(1.1);
+        }
+        .dad-review {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 15px;
+            background: #e8f5e8;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+        }
+        .dad-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .dad-status {
+            font-weight: bold;
+            color: #4caf50;
+        }
+        .added-by-badge {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
         }
         .instructions {
             background: #e3f2fd;
@@ -303,7 +386,9 @@
                     addedBy: propertyData.addedBy,
                     priority: propertyData.priority,
                     dateAdded: new Date().toLocaleDateString(),
-                    timeAdded: new Date().toLocaleTimeString()
+                    timeAdded: new Date().toLocaleTimeString(),
+                    ranking: null, // Family ranking (emoji)
+                    dadReviewed: false // Dad's review status
                 };
                 
                 this.wishlist.unshift(property); // Add to beginning
@@ -325,6 +410,15 @@
                 }
             }
             
+            updateProperty(id, field, value) {
+                const propertyIndex = this.wishlist.findIndex(p => p.id === id);
+                if (propertyIndex !== -1) {
+                    this.wishlist[propertyIndex][field] = value;
+                    this.saveToURL();
+                    this.displayWishlist();
+                }
+            }
+            
             displayWishlist() {
                 const container = document.getElementById('wishlist-container');
                 const title = document.getElementById('wishlist-title');
@@ -340,30 +434,115 @@
                     return;
                 }
                 
-                title.textContent = `📋 Dad's Property Wishlist (${this.wishlist.length} properties)`;
-                
-                // Sort by priority and date
-                const sortedList = [...this.wishlist].sort((a, b) => {
-                    const priorityOrder = { high: 3, medium: 2, low: 1 };
-                    if (priorityOrder[a.priority] !== priorityOrder[b.priority]) {
-                        return priorityOrder[b.priority] - priorityOrder[a.priority];
+                // Group by region
+                const regions = {};
+                this.wishlist.forEach(property => {
+                    if (!regions[property.region]) {
+                        regions[property.region] = [];
                     }
-                    return b.id - a.id; // Most recent first
+                    regions[property.region].push(property);
                 });
                 
-                container.innerHTML = sortedList.map(property => `
-                    <div class="wishlist-item">
+                // Count total and reviewed
+                const totalProperties = this.wishlist.length;
+                const reviewedByDad = this.wishlist.filter(p => p.dadReviewed).length;
+                
+                title.textContent = `📋 Dad's Property Wishlist (${totalProperties} properties, ${reviewedByDad} reviewed by Dad)`;
+                
+                let html = '';
+                
+                // Sort regions alphabetically
+                Object.keys(regions).sort().forEach(regionName => {
+                    const regionProperties = regions[regionName];
+                    
+                    // Sort properties within region by ranking, then priority, then date
+                    const sortedProperties = regionProperties.sort((a, b) => {
+                        // Dad reviewed items first
+                        if (a.dadReviewed !== b.dadReviewed) {
+                            return b.dadReviewed - a.dadReviewed;
+                        }
+                        
+                        // Then by ranking (if exists)
+                        const rankingOrder = { '🔥': 5, '🌟': 4, '👍': 3, '🤔': 2, '👎': 1 };
+                        const aRanking = rankingOrder[a.ranking] || 0;
+                        const bRanking = rankingOrder[b.ranking] || 0;
+                        if (aRanking !== bRanking) {
+                            return bRanking - aRanking;
+                        }
+                        
+                        // Then by priority
+                        const priorityOrder = { high: 3, medium: 2, low: 1 };
+                        if (priorityOrder[a.priority] !== priorityOrder[b.priority]) {
+                            return priorityOrder[b.priority] - priorityOrder[a.priority];
+                        }
+                        
+                        // Finally by date (newest first)
+                        return b.id - a.id;
+                    });
+                    
+                    const reviewedInRegion = regionProperties.filter(p => p.dadReviewed).length;
+                    
+                    html += `
+                        <div class="region-section">
+                            <div class="region-header">
+                                <div class="region-title">📍 ${regionName}</div>
+                                <div class="region-stats">
+                                    ${regionProperties.length} properties<br>
+                                    ${reviewedInRegion} reviewed by Dad 👨
+                                </div>
+                            </div>
+                            <div class="region-properties">
+                                ${sortedProperties.map(property => this.renderProperty(property)).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+            }
+            
+            renderProperty(property) {
+                const rankingEmojis = ['🔥', '🌟', '👍', '🤔', '👎'];
+                
+                return `
+                    <div class="wishlist-item" style="${property.dadReviewed ? 'border: 3px solid #4caf50; background: #f8fff8;' : ''}">
                         <button class="remove-btn" onclick="wishlist.removeProperty(${property.id})">Remove</button>
                         
                         <div class="item-header">
-                            <div class="item-title">${property.town}, ${property.region}</div>
+                            <div class="item-title">
+                                ${property.town}, ${property.region}
+                                <span class="added-by-badge">Added by ${property.addedBy}</span>
+                            </div>
                             <div class="item-meta">
-                                Added by ${property.addedBy}<br>
                                 ${property.dateAdded} at ${property.timeAdded}<br>
                                 <strong style="color: ${property.priority === 'high' ? '#f44336' : property.priority === 'medium' ? '#ff9800' : '#4caf50'}">
                                     ${property.priority === 'high' ? '🔥 MUST SEE!' : property.priority === 'medium' ? '👍 INTERESTING' : '🤔 MAYBE'}
                                 </strong>
                             </div>
+                        </div>
+                        
+                        <!-- Family Ranking Section -->
+                        <div class="ranking-section">
+                            <strong>👨‍👩‍👧‍👦 Family Ranking:</strong>
+                            ${rankingEmojis.map(emoji => `
+                                <button class="ranking-btn ${property.ranking === emoji ? 'selected' : ''}" 
+                                        onclick="wishlist.updateProperty(${property.id}, 'ranking', '${emoji}')"
+                                        title="${emoji === '🔥' ? 'AMAZING!' : emoji === '🌟' ? 'Great!' : emoji === '👍' ? 'Good' : emoji === '🤔' ? 'Uncertain' : 'Not great'}">
+                                    ${emoji}
+                                </button>
+                            `).join('')}
+                            ${property.ranking ? `<span style="font-weight: bold; margin-left: 10px;">Current: ${property.ranking}</span>` : '<span style="color: #666;">No ranking yet</span>'}
+                        </div>
+                        
+                        <!-- Dad's Review Section -->
+                        <div class="dad-review">
+                            <input type="checkbox" 
+                                   class="dad-checkbox" 
+                                   ${property.dadReviewed ? 'checked' : ''} 
+                                   onchange="wishlist.updateProperty(${property.id}, 'dadReviewed', this.checked)">
+                            <label class="dad-status">
+                                👨 ${property.dadReviewed ? 'Dad has reviewed this property ✅' : 'Waiting for Dad to review'}
+                            </label>
                         </div>
                         
                         <div class="item-details">
@@ -405,7 +584,7 @@
                             ${property.notes}
                         </div>
                     </div>
-                `).join('');
+                `;
             }
             
             setupForm() {
