@@ -218,11 +218,21 @@
             margin: 20px 0;
             border-left: 5px solid #2196f3;
         }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-full {
+            grid-column: 1 / -1;
+        }
         @media (max-width: 768px) {
             .towns-grid { grid-template-columns: 1fr; }
             .pros-cons { grid-template-columns: 1fr; }
             .tabs { flex-direction: column; }
             .search-buttons { flex-direction: column; }
+            .form-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -260,9 +270,9 @@
         </div>
 
         <div class="tabs">
-            <button class="tab active" onclick="showTab('explore')">🗺️ Explore Regions</button>
-            <button class="tab" onclick="showTab('wishlist')">❤️ Dad's Wishlist</button>
-            <button class="tab" onclick="showTab('search-tips')">💡 Search Tips</button>
+            <button class="tab active" onclick="showTab('explore', event)">🗺️ Explore Regions</button>
+            <button class="tab" onclick="showTab('wishlist', event)">❤️ Dad's Wishlist</button>
+            <button class="tab" onclick="showTab('search-tips', event)">💡 Search Tips</button>
         </div>
 
         <div id="explore" class="tab-content active">
@@ -1279,14 +1289,25 @@
             }
         }
         
-        function showTab(tabName) {
+        function showTab(tabName, event) {
             // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             
             // Show selected tab
             document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
+            
+            // Set active tab button
+            if (event && event.target) {
+                event.target.classList.add('active');
+            } else {
+                // Fallback: find the button by text content
+                document.querySelectorAll('.tab').forEach(tab => {
+                    if (tab.textContent.includes(tabName === 'explore' ? 'Explore' : tabName === 'wishlist' ? 'Wishlist' : 'Tips')) {
+                        tab.classList.add('active');
+                    }
+                });
+            }
             
             if (tabName === 'wishlist') {
                 loadWishlist();
