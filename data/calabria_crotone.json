@@ -1,0 +1,73 @@
+{
+  "town": "Crotone",
+  "region": "Calabria",
+  "location": "Crotone, Calabria",
+  "last_updated": "2025-11-14T16:25:58.940090",
+  "property_count": 2,
+  "properties": [
+    {
+      "id": "casa_-8719011958936700889",
+      "title": "Property",
+      "description": "MenuPubblica annuncio gratisAccediPagina inizialePubblica annuncio gratisValuta la tua casaVendi casaTrova agenziaBlogServiziCasa.it - FacebookCasa.it - TwitterCasa.it - YoutubeCasa.it - LinkedInCasa.",
+      "description_en": "MenuPubblica annuncio gratisAccediPagina inizialePubblica annuncio gratisValuta la tua casaVendi casaTrova agenziaBlogServiziCasa.it - FacebookCasa.it - TwitterCasa.it - YoutubeCasa.it - LinkedInCasa.",
+      "price": 165000,
+      "size_sqm": 500150,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "property_type": "villa",
+      "condition": "unknown",
+      "location": "Crotone, Calabria",
+      "address": null,
+      "url": "https://www.casa.it/",
+      "image_urls": [
+        "https://www.casa.it/external-resources/common_images/header/casalogo2024.svg"
+      ],
+      "price_per_sqm": 0.3299010296910927,
+      "latitude": null,
+      "longitude": null,
+      "distance_to_coast_km": null,
+      "distance_to_airport_km": null,
+      "source": "casa",
+      "first_seen": "2025-11-14T16:25:57.926556",
+      "last_seen": "2025-11-14T16:25:57.926556",
+      "price_history": [
+        [
+          "2025-11-14T16:25:57.926556",
+          165000
+        ]
+      ]
+    },
+    {
+      "id": "casa_4458367237663634223",
+      "title": "Tutta Italia",
+      "description": "Tutta ItaliaCase in CalabriaCase in vendita in Calabria Salva ricercaFiltri appaOrdina risultatiSalva ricercaOrdina risultatiPiù rilevantiPrezzo - dal più altoPrezzo - dal più bassoSuperficie - dalla ",
+      "description_en": "Tutta ItaliaCase in CalabriaCase in vendita in Calabria Salva ricercaFiltri appaOrdina risultatiSalva ricercaOrdina risultatiPiù rilevantiPrezzo - dal più altoPrezzo - dal più bassoSuperficie - dalla ",
+      "price": 165000,
+      "size_sqm": 500150,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "property_type": "villa",
+      "condition": "unknown",
+      "location": "Crotone, Calabria",
+      "address": null,
+      "url": "https://www.casa.it/#seoFooter",
+      "image_urls": [
+        "https://images-1.casa.it/360x265/listing/0/4c/79/85/695618010.jpg"
+      ],
+      "price_per_sqm": 0.3299010296910927,
+      "latitude": null,
+      "longitude": null,
+      "distance_to_coast_km": null,
+      "distance_to_airport_km": null,
+      "source": "casa",
+      "first_seen": "2025-11-14T16:25:58.434777",
+      "last_seen": "2025-11-14T16:25:58.434777",
+      "price_history": [
+        [
+          "2025-11-14T16:25:58.434777",
+          165000
+        ]
+      ]
+    }
+  ]
+}

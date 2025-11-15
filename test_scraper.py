@@ -54,13 +54,45 @@ def test_property_search():
             
             if response.status_code == 200:
                 soup = BeautifulSoup(response.content, 'html.parser')
-                listings = soup.find_all(['div', 'article'], class_=lambda x: x and ('property' in x.lower() or 'listing' in x.lower()))
-                print(f"Found {len(listings)} potential property elements")
                 
-                # Look for prices to verify we're getting property data
-                prices = soup.find_all(text=lambda text: text and '€' in text)
-                price_count = len([p for p in prices if any(char.isdigit() for char in p)])
-                print(f"Found {price_count} price elements")
+                # Try multiple strategies to find property listings
+                print("\n  🔍 Analyzing page structure...")
+                
+                # Strategy 1: Look for common property listing classes
+                listings1 = soup.find_all(['div', 'article'], class_=lambda x: x and ('property' in x.lower() or 'listing' in x.lower() or 'annuncio' in x.lower() or 'casa' in x.lower()))
+                print(f"  Strategy 1 (class-based): Found {len(listings1)} elements")
+                
+                # Strategy 2: Look for links that might be property links
+                property_links = soup.find_all('a', href=lambda x: x and ('/vendita/' in x or '/annuncio/' in x or '/immobile/' in x))
+                print(f"  Strategy 2 (link-based): Found {len(property_links)} property links")
+                
+                # Strategy 3: Look for price patterns in the HTML
+                prices = soup.find_all(string=lambda text: text and '€' in str(text) and any(char.isdigit() for char in str(text)))
+                price_count = len([p for p in prices if len(str(p).strip()) < 50])  # Filter out long text
+                print(f"  Strategy 3 (price-based): Found {price_count} price mentions")
+                
+                # Strategy 4: Look for common data attributes
+                data_listings = soup.find_all(attrs={'data-id': True}) + soup.find_all(attrs={'data-property-id': True})
+                print(f"  Strategy 4 (data-attributes): Found {len(data_listings)} elements with data IDs")
+                
+                # Strategy 5: Look for specific Casa.it structure
+                casa_listings = soup.find_all(['div', 'article'], attrs={'class': lambda x: x and any(term in str(x).lower() for term in ['card', 'item', 'box', 'result'])})
+                print(f"  Strategy 5 (generic cards): Found {len(casa_listings)} card/item elements")
+                
+                # Show sample of what we found
+                if property_links:
+                    print(f"\n  📋 Sample property links found:")
+                    for link in property_links[:3]:
+                        href = link.get('href', '')
+                        text = link.get_text(strip=True)[:50]
+                        print(f"    - {text} -> {href[:80]}")
+                
+                # Check if page has JavaScript-rendered content indicators
+                scripts = soup.find_all('script')
+                react_vue_angular = any('react' in str(s).lower() or 'vue' in str(s).lower() or 'angular' in str(s).lower() for s in scripts)
+                if react_vue_angular or len(scripts) > 10:
+                    print(f"\n  ⚠️  Page appears to be JavaScript-rendered ({len(scripts)} scripts found)")
+                    print(f"     May need Selenium/Playwright for full content")
                 
         except Exception as e:
             print(f"Casa.it search failed: {e}")

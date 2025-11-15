@@ -43,6 +43,9 @@
             font-size: 16px; 
             font-weight: bold;
             transition: all 0.3s ease;
+            pointer-events: auto;
+            position: relative;
+            z-index: 10;
         }
         .tab.active { 
             background: #667eea; 
@@ -68,10 +71,12 @@
             border-radius: 15px; 
             padding: 25px; 
             transition: all 0.3s ease;
-            cursor: pointer;
             background: white;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
+        }
+        .region-card-header {
+            cursor: pointer;
         }
         .region-card::before {
             content: '';
@@ -81,6 +86,12 @@
             right: 0;
             height: 5px;
             background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .region-card > * {
+            position: relative;
+            z-index: 1;
         }
         .region-card:hover { 
             border-color: #667eea; 
@@ -157,6 +168,9 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
+            pointer-events: auto;
+            position: relative;
+            z-index: 10;
         }
         .search-btn:hover { 
             background: #45a049; 
@@ -168,6 +182,9 @@
             width: 100%;
             padding: 12px;
             font-size: 16px;
+            pointer-events: auto;
+            position: relative;
+            z-index: 10;
         }
         .wishlist-btn:hover { background: #f57c00; }
         .pros-cons { 
@@ -270,16 +287,16 @@
         </div>
 
         <div class="tabs">
-            <button class="tab active" onclick="showTab('explore', event)">🗺️ Explore Regions</button>
-            <button class="tab" onclick="showTab('wishlist', event)">❤️ Dad's Wishlist</button>
-            <button class="tab" onclick="showTab('search-tips', event)">💡 Search Tips</button>
+            <button class="tab active" onclick="showTab('explore', event); return false;">🗺️ Explore Regions</button>
+            <button class="tab" onclick="showTab('wishlist', event); return false;">❤️ Dad's Wishlist</button>
+            <button class="tab" onclick="showTab('search-tips', event); return false;">💡 Search Tips</button>
         </div>
 
         <div id="explore" class="tab-content active">
             <div class="regions-grid">
 
-                <div class="region-card" onclick="toggleRegion('Puglia')">
-                    <div class="region-header">📍 Puglia</div>
+                <div class="region-card">
+                    <div class="region-header region-card-header" onclick="toggleRegion('Puglia', event); return false;">📍 Puglia</div>
                     <p><strong>Heel of Italy - Authentic, affordable, great food</strong></p>
                     <div class="detail-row">
                         <span class="detail-icon">🌤️</span>
@@ -517,8 +534,8 @@
                     </div>
                 </div>
 
-                <div class="region-card" onclick="toggleRegion('Calabria')">
-                    <div class="region-header">📍 Calabria</div>
+                <div class="region-card">
+                    <div class="region-header region-card-header" onclick="toggleRegion('Calabria', event); return false;">📍 Calabria</div>
                     <p><strong>Toe of Italy - Stunning coast, mountains, very affordable</strong></p>
                     <div class="detail-row">
                         <span class="detail-icon">🌤️</span>
@@ -752,8 +769,8 @@
                     </div>
                 </div>
 
-                <div class="region-card" onclick="toggleRegion('Sicily')">
-                    <div class="region-header">📍 Sicily</div>
+                <div class="region-card">
+                    <div class="region-header region-card-header" onclick="toggleRegion('Sicily', event); return false;">📍 Sicily</div>
                     <p><strong>Mediterranean island - Diverse, cultural, great airports</strong></p>
                     <div class="detail-row">
                         <span class="detail-icon">🌤️</span>
@@ -934,8 +951,8 @@
                     </div>
                 </div>
 
-                <div class="region-card" onclick="toggleRegion('Liguria')">
-                    <div class="region-header">📍 Liguria</div>
+                <div class="region-card">
+                    <div class="region-header region-card-header" onclick="toggleRegion('Liguria', event); return false;">📍 Liguria</div>
                     <p><strong>Italian Riviera - Stunning but expensive</strong></p>
                     <div class="detail-row">
                         <span class="detail-icon">🌤️</span>
@@ -1071,7 +1088,12 @@
                 <h2>❤️ Dad's Property Wishlist</h2>
                 <p>Drop property URLs and let the system auto-populate details!</p>
                 
-                <div class="wishlist-form">
+                <div class="tabs" style="margin: 0 0 20px 0;">
+                    <button class="tab active" onclick="showPropertyForm('single')">🏠 Single Property</button>
+                    <button class="tab" onclick="showPropertyForm('bulk')">📦 Bulk Import</button>
+                </div>
+                
+                <div class="wishlist-form" id="single-property-form">
                     <h3>🔗 Smart Property URL Parser</h3>
                     <form id="smart-property-form">
                         <div class="form-row">
@@ -1121,6 +1143,62 @@
                         
                         <button type="submit" style="background: #4caf50; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px;">
                             ❤️ Add to Dad's Wishlist
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="wishlist-form" id="bulk-property-form" style="display: none;">
+                    <h3>📦 Bulk Property Import</h3>
+                    <p style="color: #666; margin-bottom: 15px;">Paste multiple property URLs (one per line) for quick import!</p>
+                    
+                    <form id="bulk-property-form-element">
+                        <div class="form-row">
+                            <textarea id="bulk-urls" placeholder="Paste multiple property URLs here (one per line):&#10;&#10;https://www.immobiliare.it/...&#10;https://www.casa.it/...&#10;https://www.idealista.it/..." rows="8" class="form-full" required style="padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; resize: vertical; font-family: monospace;"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <select id="bulk-hotness" required style="padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
+                                <option value="">Default hotness rating for all? 🌡️</option>
+                                <option value="🔥">🔥 MUST SEE! (Top priority)</option>
+                                <option value="🌟">🌟 Looks Great!</option>
+                                <option value="👍">👍 Pretty Good</option>
+                                <option value="🤔">🤔 Maybe Worth It</option>
+                                <option value="👎">👎 Not Impressed</option>
+                            </select>
+                            
+                            <select id="bulk-added-by" required style="padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
+                                <option value="">Who found these? 👨‍👩‍👧‍👦</option>
+                                <option value="C">👩 C</option>
+                                <option value="J">👨 J</option>
+                                <option value="L">👧 L</option>
+                                <option value="K">👦 K</option>
+                                <option value="E">👤 E</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <button type="button" onclick="processBulkUrls()" style="background: #2196f3; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%;">
+                                🔍 Process All URLs
+                            </button>
+                        </div>
+                        
+                        <div id="bulk-progress" style="display: none; background: #fff3e0; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                            <div style="font-weight: bold; margin-bottom: 10px;">Processing URLs...</div>
+                            <div style="background: #e0e0e0; border-radius: 10px; overflow: hidden;">
+                                <div id="progress-bar" style="height: 8px; background: linear-gradient(90deg, #4caf50, #8bc34a); width: 0%; transition: width 0.3s ease;"></div>
+                            </div>
+                            <div id="progress-text" style="font-size: 14px; margin-top: 10px; color: #666;">0 of 0 URLs processed</div>
+                        </div>
+                        
+                        <div id="bulk-preview" style="display: none; background: #f0f8ff; padding: 20px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #2196f3; max-height: 400px; overflow-y: auto;">
+                            <h4>📋 Parsed Properties Preview</h4>
+                            <div id="bulk-preview-content"></div>
+                        </div>
+                        
+                        <textarea id="bulk-notes" placeholder="Additional notes for all properties..." rows="2" class="form-full" style="padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; resize: vertical;"></textarea>
+                        
+                        <button type="submit" style="background: #4caf50; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px;">
+                            ❤️ Add All to Dad's Wishlist
                         </button>
                     </form>
                 </div>
@@ -1196,18 +1274,24 @@
         // Enhanced wishlist system with URL parsing
         let wishlist = [];
         let currentPropertyData = null;
+        let bulkProcessedProperties = [];
         
-        // Define all click handlers globally FIRST
-        function toggleRegion(regionName) {
-            const townDiv = document.getElementById(regionName + '-towns');
-            if (townDiv && townDiv.style.display === 'none') {
-                townDiv.style.display = 'block';
-            } else if (townDiv) {
-                townDiv.style.display = 'none';
+        // Define all click handlers globally FIRST - attach to window object
+        window.toggleRegion = function(regionName, event) {
+            if (event) {
+                event.stopPropagation();
             }
-        }
+            const townDiv = document.getElementById(regionName + '-towns');
+            if (townDiv) {
+                if (townDiv.style.display === 'none' || !townDiv.style.display) {
+                    townDiv.style.display = 'block';
+                } else {
+                    townDiv.style.display = 'none';
+                }
+            }
+        };
         
-        function addToWishlist(region, town, notes) {
+        window.addToWishlist = function(region, town, notes) {
             const item = {
                 id: Date.now(),
                 region: region,
@@ -1225,12 +1309,12 @@
             
             wishlist.push(item);
             saveWishlist();
-            alert('✅ Added to Papa\\'s wishlist: ' + town + ', ' + region);
+            alert('✅ Added to Dad\'s wishlist: ' + town + ', ' + region);
             
-            if (document.getElementById('wishlist').classList.contains('active')) {
+            if (document.getElementById('wishlist') && document.getElementById('wishlist').classList.contains('active')) {
                 displayWishlist();
             }
-        }
+        };
         
         function parsePropertyURL() {
             const url = document.getElementById('property-url').value;
@@ -1289,13 +1373,16 @@
             }
         }
         
-        function showTab(tabName, event) {
+        window.showTab = function(tabName, event) {
             // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             
             // Show selected tab
-            document.getElementById(tabName).classList.add('active');
+            const tabContent = document.getElementById(tabName);
+            if (tabContent) {
+                tabContent.classList.add('active');
+            }
             
             // Set active tab button
             if (event && event.target) {
@@ -1303,7 +1390,10 @@
             } else {
                 // Fallback: find the button by text content
                 document.querySelectorAll('.tab').forEach(tab => {
-                    if (tab.textContent.includes(tabName === 'explore' ? 'Explore' : tabName === 'wishlist' ? 'Wishlist' : 'Tips')) {
+                    const tabText = tab.textContent.toLowerCase();
+                    if ((tabName === 'explore' && tabText.includes('explore')) ||
+                        (tabName === 'wishlist' && tabText.includes('wishlist')) ||
+                        (tabName === 'search-tips' && tabText.includes('tips'))) {
                         tab.classList.add('active');
                     }
                 });
@@ -1313,7 +1403,7 @@
                 loadWishlist();
                 displayWishlist();
             }
-        }
+        };
         
         // Load/save wishlist from localStorage
         function loadWishlist() {
@@ -1370,6 +1460,173 @@
             }
             
             currentPropertyData = propertyData;
+        };
+
+        // Form switching for single vs bulk property import
+        window.showPropertyForm = function(formType) {
+            const singleForm = document.getElementById('single-property-form');
+            const bulkForm = document.getElementById('bulk-property-form');
+            
+            // Update tab states - find the right tabs container
+            const wishlistSection = document.querySelector('.wishlist-section');
+            const tabs = wishlistSection.querySelectorAll('.tabs .tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            if (formType === 'single') {
+                singleForm.style.display = 'block';
+                bulkForm.style.display = 'none';
+                // Find and activate the single property tab
+                tabs.forEach(tab => {
+                    if (tab.textContent.includes('Single Property')) {
+                        tab.classList.add('active');
+                    }
+                });
+            } else if (formType === 'bulk') {
+                singleForm.style.display = 'none';
+                bulkForm.style.display = 'block';
+                // Find and activate the bulk import tab
+                tabs.forEach(tab => {
+                    if (tab.textContent.includes('Bulk Import')) {
+                        tab.classList.add('active');
+                    }
+                });
+            }
+        };
+
+        // Bulk URL processing
+        window.processBulkUrls = async function() {
+            const bulkUrls = document.getElementById('bulk-urls').value.trim();
+            const bulkHotness = document.getElementById('bulk-hotness').value;
+            const bulkAddedBy = document.getElementById('bulk-added-by').value;
+            
+            if (!bulkUrls) {
+                alert('Please paste some property URLs first');
+                return;
+            }
+            
+            if (!bulkHotness || !bulkAddedBy) {
+                alert('Please select hotness rating and who found these properties');
+                return;
+            }
+            
+            // Split URLs by line breaks and filter out empty lines
+            const urls = bulkUrls.split(/\r?\n/).filter(url => url.trim() && url.includes('http'));
+            
+            if (urls.length === 0) {
+                alert('No valid URLs found. Please check your input.');
+                return;
+            }
+            
+            // Show progress bar
+            const progressDiv = document.getElementById('bulk-progress');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const previewDiv = document.getElementById('bulk-preview');
+            const previewContent = document.getElementById('bulk-preview-content');
+            
+            progressDiv.style.display = 'block';
+            previewDiv.style.display = 'none';
+            bulkProcessedProperties = [];
+            
+            let successfulParsed = 0;
+            
+            for (let i = 0; i < urls.length; i++) {
+                const url = urls[i].trim();
+                
+                // Update progress
+                const progress = ((i + 1) / urls.length) * 100;
+                progressBar.style.width = progress + '%';
+                progressText.textContent = `${i + 1} of ${urls.length} URLs processed`;
+                
+                try {
+                    // Parse each URL
+                    const propertyData = extractPropertyDataFromURL(url);
+                    
+                    // Create property object
+                    const property = {
+                        id: Date.now() + Math.random(), // Unique ID
+                        url: url,
+                        town: propertyData.town,
+                        region: propertyData.region,
+                        price: propertyData.price,
+                        size: propertyData.size,
+                        beachDistance: propertyData.beachDistance,
+                        airportAccess: propertyData.airportAccess,
+                        site: propertyData.site,
+                        hotness: bulkHotness,
+                        addedBy: bulkAddedBy,
+                        notes: '', // Will be filled from the notes field
+                        dateAdded: new Date().toLocaleDateString(),
+                        timeAdded: new Date().toLocaleTimeString(),
+                        papaReviewed: false
+                    };
+                    
+                    bulkProcessedProperties.push(property);
+                    successfulParsed++;
+                    
+                    // Small delay to show progress
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                } catch (error) {
+                    console.warn(`Failed to parse URL: ${url}`, error);
+                }
+            }
+            
+            // Hide progress and show preview
+            progressDiv.style.display = 'none';
+            
+            if (bulkProcessedProperties.length > 0) {
+                previewDiv.style.display = 'block';
+                
+                // Group by region for preview
+                const regions = {};
+                bulkProcessedProperties.forEach(prop => {
+                    if (!regions[prop.region]) {
+                        regions[prop.region] = [];
+                    }
+                    regions[prop.region].push(prop);
+                });
+                
+                let previewHtml = `
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                        <strong>✅ Successfully parsed ${successfulParsed} of ${urls.length} properties!</strong>
+                        ${successfulParsed !== urls.length ? `<br><span style="color: #f57c00;">⚠️ ${urls.length - successfulParsed} URLs could not be parsed</span>` : ''}
+                    </div>
+                `;
+                
+                Object.keys(regions).forEach(regionName => {
+                    const regionProperties = regions[regionName];
+                    previewHtml += `
+                        <div style="margin-bottom: 20px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
+                            <div style="background: #667eea; color: white; padding: 10px; font-weight: bold;">
+                                📍 ${regionName} (${regionProperties.length} properties)
+                            </div>
+                            <div style="padding: 15px;">
+                    `;
+                    
+                    regionProperties.forEach(prop => {
+                        previewHtml += `
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div>
+                                    <strong>${prop.town}</strong> • ${prop.price} • ${prop.hotness}
+                                </div>
+                                <div style="font-size: 12px; color: #666;">
+                                    ${prop.site}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    previewHtml += `
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                previewContent.innerHTML = previewHtml;
+            } else {
+                alert('No properties could be parsed from the provided URLs. Please check the URLs are valid.');
+            }
         };
         
         function extractPropertyDataFromURL(url) {
@@ -1442,58 +1699,6 @@
             };
         }
         
-        window.toggleRegion = function(regionName) {
-            const townDiv = document.getElementById(regionName + '-towns');
-            if (townDiv && townDiv.style.display === 'none') {
-                townDiv.style.display = 'block';
-            } else if (townDiv) {
-                townDiv.style.display = 'none';
-            }
-        };
-        
-        window.addToWishlist = function(region, town, notes) {
-            // Legacy function for region exploration buttons
-            const item = {
-                id: Date.now(),
-                region: region,
-                town: town,
-                notes: notes,
-                addedBy: 'Family',
-                dateAdded: new Date().toLocaleDateString(),
-                papaReviewed: false,
-                hotness: '🤔',
-                url: '',
-                price: 'Unknown',
-                beachDistance: 'Unknown',
-                airportAccess: 'Unknown'
-            };
-            
-            wishlist.push(item);
-            saveWishlist();
-            alert('✅ Added to Dad\\'s wishlist: ' + town + ', ' + region);
-            
-            if (document.getElementById('wishlist').classList.contains('active')) {
-                displayWishlist();
-            }
-        };
-        
-        function addToWishlist(region, town, notes) {
-            const item = {
-                region: region,
-                town: town,
-                notes: notes,
-                added_by: 'Family Member',
-                date_added: new Date().toLocaleDateString()
-            };
-            
-            wishlist.push(item);
-            saveWishlist();
-            alert('✅ Added to Dad\'s wishlist: ' + town + ', ' + region);
-            
-            if (document.getElementById('wishlist').classList.contains('active')) {
-                displayWishlist();
-            }
-        }
         
         function addCustomToWishlist() {
             const region = document.getElementById('custom-region').value;
@@ -1564,6 +1769,39 @@
                     this.reset();
                     document.getElementById('property-preview').style.display = 'none';
                     currentPropertyData = null;
+                    
+                    displayWishlist();
+                });
+            }
+            
+            // Bulk form submission handler
+            const bulkForm = document.getElementById('bulk-property-form-element');
+            if (bulkForm) {
+                bulkForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    if (bulkProcessedProperties.length === 0) {
+                        alert('Please process URLs first using the "Process All URLs" button');
+                        return;
+                    }
+                    
+                    const bulkNotes = document.getElementById('bulk-notes').value;
+                    
+                    // Add notes to all properties and add them to wishlist
+                    bulkProcessedProperties.forEach(property => {
+                        property.notes = bulkNotes;
+                        wishlist.unshift(property);
+                    });
+                    
+                    saveWishlist();
+                    
+                    alert(`✅ Added ${bulkProcessedProperties.length} properties to Dad's wishlist!`);
+                    
+                    // Reset bulk form
+                    this.reset();
+                    document.getElementById('bulk-progress').style.display = 'none';
+                    document.getElementById('bulk-preview').style.display = 'none';
+                    bulkProcessedProperties = [];
                     
                     displayWishlist();
                 });
@@ -1743,10 +1981,19 @@
         
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Ensure all functions are available
+            console.log('Page loaded, functions available:', {
+                showTab: typeof window.showTab,
+                toggleRegion: typeof window.toggleRegion,
+                addToWishlist: typeof window.addToWishlist,
+                parsePropertyURL: typeof window.parsePropertyURL
+            });
+            
             // Add click tracking for search buttons
             document.querySelectorAll('.search-btn').forEach(btn => {
                 if (!btn.onclick && !btn.hasAttribute('onclick')) { // Don't override existing handlers
-                    btn.addEventListener('click', function() {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
                         this.style.background = '#2e7d32';
                         const originalText = this.innerHTML;
                         this.innerHTML = '✅ Opening...';
@@ -1756,6 +2003,12 @@
                         }, 2000);
                     });
                 }
+            });
+            
+            // Ensure buttons and links are clickable
+            document.querySelectorAll('button, a').forEach(el => {
+                el.style.pointerEvents = 'auto';
+                el.style.cursor = 'pointer';
             });
         });
     </script>

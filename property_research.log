@@ -67,3 +67,378 @@
 2025-11-14 11:02:15,991 - INFO - Filtered to 0 matching properties
 2025-11-14 11:02:17,993 - INFO - No properties found matching criteria
 2025-11-14 11:02:17,994 - INFO - Property search completed
+2025-11-14 14:35:21,509 - INFO - ====== WebDriver manager ======
+2025-11-14 14:35:21,838 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-14 14:35:21,916 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-14 14:35:21,961 - INFO - There is no [mac64] chromedriver "142.0.7444.162" for browser google-chrome "142.0.7444" in cache
+2025-11-14 14:35:21,966 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-14 14:35:22,086 - INFO - WebDriver version 142.0.7444.162 selected
+2025-11-14 14:35:22,089 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/142.0.7444.162/mac-arm64/chromedriver-mac-arm64.zip
+2025-11-14 14:35:22,089 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/142.0.7444.162/mac-arm64/chromedriver-mac-arm64.zip
+2025-11-14 14:35:22,154 - INFO - Driver downloading response is 200
+2025-11-14 14:35:22,914 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-14 14:35:23,022 - INFO - Driver has been saved in cache [/Users/cort/.wdm/drivers/chromedriver/mac64/142.0.7444.162]
+2025-11-14 14:35:24,598 - INFO - Selenium WebDriver initialized successfully
+2025-11-14 14:35:24,599 - INFO - Starting property search...
+2025-11-14 14:35:24,599 - INFO - Searching properties in Crotone, Calabria
+2025-11-14 14:35:24,599 - INFO - Using Selenium to scrape Immobiliare.it for Crotone, Calabria
+2025-11-14 14:35:39,048 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000103223aa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x000000010321b760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x0000000102d322bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x0000000102d798ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x0000000102dbad78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000102d6df10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x00000001031e5b98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x00000001031e93ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x00000001031c6a08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x00000001031e9c84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x00000001031b8304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x0000000103209d58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x0000000103209edc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x000000010321b3b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 14:35:39,466 - INFO - Found 0 properties from Immobiliare.it in Crotone, Calabria
+2025-11-14 14:35:39,467 - INFO - Using Selenium to scrape Casa.it for Crotone, Calabria
+2025-11-14 14:35:44,636 - INFO - Found 517 listings using selector: ['div', 'article']
+2025-11-14 14:35:44,637 - INFO - Found 0 properties from Casa.it in Crotone, Calabria
+2025-11-14 14:35:44,637 - INFO - Total properties found in Crotone, Calabria: 0
+2025-11-14 14:35:44,637 - INFO - Filtered to 0 matching properties
+2025-11-14 14:35:46,642 - INFO - Searching properties in Catania, Sicily
+2025-11-14 14:35:46,643 - INFO - Using Selenium to scrape Immobiliare.it for Catania, Sicily
+2025-11-14 14:36:00,234 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000103223aa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x000000010321b760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x0000000102d322bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x0000000102d798ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x0000000102dbad78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000102d6df10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x00000001031e5b98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x00000001031e93ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x00000001031c6a08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x00000001031e9c84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x00000001031b8304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x0000000103209d58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x0000000103209edc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x000000010321b3b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 14:36:00,450 - INFO - Found 0 properties from Immobiliare.it in Catania, Sicily
+2025-11-14 14:36:00,450 - INFO - Using Selenium to scrape Casa.it for Catania, Sicily
+2025-11-14 14:36:14,652 - WARNING - Selenium failed for Casa.it: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000103223aa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x000000010321b760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x0000000102d322bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x0000000102d798ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x0000000102dbad78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000102d6df10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x00000001031e5b98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x00000001031e93ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x00000001031c6a08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x00000001031e9c84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x00000001031b8304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x0000000103209d58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x0000000103209edc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x000000010321b3b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 14:36:16,082 - WARNING - Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+2025-11-14 14:36:16,085 - INFO - Found 0 property links as fallback
+2025-11-14 14:36:16,085 - INFO - Found 0 properties from Casa.it in Catania, Sicily
+2025-11-14 14:36:16,085 - INFO - Total properties found in Catania, Sicily: 0
+2025-11-14 14:36:16,085 - INFO - Filtered to 0 matching properties
+2025-11-14 14:36:18,090 - INFO - Searching properties in Andria, Puglia
+2025-11-14 14:36:18,090 - INFO - Using Selenium to scrape Immobiliare.it for Andria, Puglia
+2025-11-14 14:36:31,734 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000103223aa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x000000010321b760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x0000000102d322bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x0000000102d798ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x0000000102dbad78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000102d6df10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x00000001031e5b98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x00000001031e93ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x00000001031c6a08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x00000001031e9c84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x00000001031b8304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x0000000103209d58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x0000000103209edc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x000000010321b3b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 14:36:31,898 - INFO - Found 0 properties from Immobiliare.it in Andria, Puglia
+2025-11-14 14:36:31,898 - INFO - Using Selenium to scrape Casa.it for Andria, Puglia
+2025-11-14 14:36:45,840 - WARNING - Selenium failed for Casa.it: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000103223aa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x000000010321b760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x0000000102d322bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x0000000102d798ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x0000000102dbad78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000102d6df10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x00000001031e5b98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x00000001031e93ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x00000001031c6a08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x00000001031e9c84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x00000001031b8304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x0000000103209d58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x0000000103209edc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x000000010321b3b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 14:36:46,917 - WARNING - Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+2025-11-14 14:36:46,922 - INFO - Found 0 property links as fallback
+2025-11-14 14:36:46,922 - INFO - Found 0 properties from Casa.it in Andria, Puglia
+2025-11-14 14:36:46,922 - INFO - Total properties found in Andria, Puglia: 0
+2025-11-14 14:36:46,922 - INFO - Filtered to 0 matching properties
+2025-11-14 14:36:48,927 - INFO - Searching properties in Rodi Garganico, Puglia
+2025-11-14 14:36:48,927 - INFO - Using Selenium to scrape Immobiliare.it for Rodi Garganico, Puglia
+2025-11-14 14:37:02,896 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000103223aa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x000000010321b760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x0000000102d322bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x0000000102d798ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x0000000102dbad78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000102d6df10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x00000001031e5b98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x00000001031e93ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x00000001031c6a08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x00000001031e9c84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x00000001031b8304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x0000000103209d58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x0000000103209edc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x000000010321b3b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 14:37:03,033 - INFO - Found 0 properties from Immobiliare.it in Rodi Garganico, Puglia
+2025-11-14 14:37:03,034 - INFO - Using Selenium to scrape Casa.it for Rodi Garganico, Puglia
+2025-11-14 14:37:06,743 - INFO - Found 557 listings using selector: ['div', 'article']
+2025-11-14 14:37:06,744 - INFO - Found 0 properties from Casa.it in Rodi Garganico, Puglia
+2025-11-14 14:37:06,744 - INFO - Total properties found in Rodi Garganico, Puglia: 0
+2025-11-14 14:37:06,744 - INFO - Filtered to 0 matching properties
+2025-11-14 14:37:08,749 - INFO - No properties found matching criteria
+2025-11-14 14:37:08,750 - INFO - Property search completed
+2025-11-14 14:37:40,650 - INFO - ====== WebDriver manager ======
+2025-11-14 14:37:40,779 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-14 14:37:40,824 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-14 14:37:40,863 - INFO - Driver [/Users/cort/.wdm/drivers/chromedriver/mac64/142.0.7444.162/chromedriver-mac-arm64/chromedriver] found in cache
+2025-11-14 14:37:41,764 - INFO - Selenium WebDriver initialized successfully
+2025-11-14 14:37:41,764 - INFO - Starting property search...
+2025-11-14 14:37:41,764 - INFO - Searching properties in Crotone, Calabria
+2025-11-14 14:37:41,764 - INFO - Using Selenium to scrape Immobiliare.it for Crotone, Calabria
+2025-11-14 14:37:55,967 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001025b7aa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x00000001025af760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x00000001020c62bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x000000010210d8ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x000000010214ed78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000102101f10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x0000000102579b98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x000000010257d3ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x000000010255aa08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x000000010257dc84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x000000010254c304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x000000010259dd58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x000000010259dedc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x00000001025af3b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 14:37:56,393 - INFO - Found 0 properties from Immobiliare.it in Crotone, Calabria
+2025-11-14 14:37:56,393 - INFO - Using Selenium to scrape Casa.it for Crotone, Calabria
+2025-11-14 14:38:00,207 - INFO - Found 517 listings using selector: ['div', 'article']
+2025-11-14 14:38:00,208 - WARNING - Translation failed: 'coroutine' object has no attribute 'text'
+2025-11-14 14:38:00,718 - WARNING - Translation failed: 'coroutine' object has no attribute 'text'
+2025-11-14 14:38:01,228 - INFO - Found 2 properties from Casa.it in Crotone, Calabria
+2025-11-14 14:38:01,229 - INFO - Total properties found in Crotone, Calabria: 2
+2025-11-14 14:38:01,229 - INFO - Filtered to 2 matching properties
+2025-11-14 14:38:03,232 - INFO - Searching properties in Catania, Sicily
+2025-11-14 14:38:03,233 - INFO - Using Selenium to scrape Immobiliare.it for Catania, Sicily
+2025-11-14 14:38:16,842 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001025b7aa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x00000001025af760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x00000001020c62bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x000000010210d8ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x000000010214ed78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000102101f10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x0000000102579b98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x000000010257d3ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x000000010255aa08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x000000010257dc84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x000000010254c304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x000000010259dd58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x000000010259dedc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x00000001025af3b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 14:38:17,010 - INFO - Found 0 properties from Immobiliare.it in Catania, Sicily
+2025-11-14 14:38:17,011 - INFO - Using Selenium to scrape Casa.it for Catania, Sicily
+2025-11-14 14:38:20,526 - INFO - Found 539 listings using selector: ['div', 'article']
+2025-11-14 14:38:20,528 - INFO - Found 0 properties from Casa.it in Catania, Sicily
+2025-11-14 14:38:20,528 - INFO - Total properties found in Catania, Sicily: 0
+2025-11-14 14:38:20,528 - INFO - Filtered to 0 matching properties
+2025-11-14 14:38:22,532 - INFO - Searching properties in Andria, Puglia
+2025-11-14 14:38:22,532 - INFO - Using Selenium to scrape Immobiliare.it for Andria, Puglia
+2025-11-14 14:38:36,146 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001025b7aa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x00000001025af760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x00000001020c62bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x000000010210d8ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x000000010214ed78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000102101f10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x0000000102579b98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x000000010257d3ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x000000010255aa08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x000000010257dc84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x000000010254c304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x000000010259dd58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x000000010259dedc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x00000001025af3b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 14:38:36,287 - INFO - Found 0 properties from Immobiliare.it in Andria, Puglia
+2025-11-14 14:38:36,287 - INFO - Using Selenium to scrape Casa.it for Andria, Puglia
+2025-11-14 14:38:48,863 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(54, 'Connection reset by peer')': /session/f5e4eb046663bc1375cdf88423d466b9
+2025-11-14 14:38:48,864 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x107bc5310>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/f5e4eb046663bc1375cdf88423d466b9
+2025-11-14 14:38:48,867 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x107bc4410>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/f5e4eb046663bc1375cdf88423d466b9
+2025-11-14 16:25:37,378 - INFO - ====== WebDriver manager ======
+2025-11-14 16:25:37,543 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-14 16:25:37,623 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-14 16:25:37,666 - INFO - Driver [/Users/cort/.wdm/drivers/chromedriver/mac64/142.0.7444.162/chromedriver-mac-arm64/chromedriver] found in cache
+2025-11-14 16:25:38,539 - INFO - Selenium WebDriver initialized successfully
+2025-11-14 16:25:38,539 - INFO - Starting property search...
+2025-11-14 16:25:38,539 - INFO - Searching properties in Crotone, Calabria
+2025-11-14 16:25:38,540 - INFO - Using Selenium to scrape Immobiliare.it for Crotone, Calabria
+2025-11-14 16:25:52,863 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001046bbaa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x00000001046b3760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x00000001041ca2bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x00000001042118ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x0000000104252d78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000104205f10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x000000010467db98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x00000001046813ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x000000010465ea08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x0000000104681c84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x0000000104650304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x00000001046a1d58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x00000001046a1edc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x00000001046b33b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 16:25:53,294 - INFO - Found 0 properties from Immobiliare.it in Crotone, Calabria
+2025-11-14 16:25:53,296 - INFO - Using Selenium to scrape Casa.it for Crotone, Calabria
+2025-11-14 16:25:57,924 - INFO - Found 517 listings using selector: ['div', 'article']
+2025-11-14 16:25:57,926 - WARNING - Translation failed: 'coroutine' object has no attribute 'text'
+2025-11-14 16:25:58,434 - WARNING - Translation failed: 'coroutine' object has no attribute 'text'
+2025-11-14 16:25:58,939 - INFO - Found 2 properties from Casa.it in Crotone, Calabria
+2025-11-14 16:25:58,939 - INFO - Total properties found in Crotone, Calabria: 2
+2025-11-14 16:25:58,939 - INFO - Filtered to 2 matching properties
+2025-11-14 16:25:58,939 - INFO - Geocoding 2 properties for Crotone, Calabria...
+2025-11-14 16:25:58,940 - INFO - Saved 2 properties to data/calabria_crotone.json
+2025-11-14 16:26:00,947 - INFO - Searching properties in Catania, Sicily
+2025-11-14 16:26:00,948 - INFO - Using Selenium to scrape Immobiliare.it for Catania, Sicily
+2025-11-14 16:26:14,572 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001046bbaa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x00000001046b3760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x00000001041ca2bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x00000001042118ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x0000000104252d78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000104205f10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x000000010467db98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x00000001046813ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x000000010465ea08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x0000000104681c84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x0000000104650304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x00000001046a1d58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x00000001046a1edc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x00000001046b33b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 16:26:14,706 - INFO - Found 0 properties from Immobiliare.it in Catania, Sicily
+2025-11-14 16:26:14,706 - INFO - Using Selenium to scrape Casa.it for Catania, Sicily
+2025-11-14 16:26:19,783 - INFO - Found 541 listings using selector: ['div', 'article']
+2025-11-14 16:26:19,786 - INFO - Found 0 properties from Casa.it in Catania, Sicily
+2025-11-14 16:26:19,786 - INFO - Total properties found in Catania, Sicily: 0
+2025-11-14 16:26:19,786 - INFO - Filtered to 0 matching properties
+2025-11-14 16:26:19,786 - INFO - Geocoding 0 properties for Catania, Sicily...
+2025-11-14 16:26:21,791 - INFO - Searching properties in Andria, Puglia
+2025-11-14 16:26:21,791 - INFO - Using Selenium to scrape Immobiliare.it for Andria, Puglia
+2025-11-14 16:26:35,420 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001046bbaa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x00000001046b3760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x00000001041ca2bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x00000001042118ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x0000000104252d78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000104205f10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x000000010467db98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x00000001046813ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x000000010465ea08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x0000000104681c84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x0000000104650304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x00000001046a1d58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x00000001046a1edc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x00000001046b33b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 16:26:35,651 - INFO - Found 0 properties from Immobiliare.it in Andria, Puglia
+2025-11-14 16:26:35,652 - INFO - Using Selenium to scrape Casa.it for Andria, Puglia
+2025-11-14 16:26:40,507 - INFO - Found 557 listings using selector: ['div', 'article']
+2025-11-14 16:26:40,509 - INFO - Found 0 properties from Casa.it in Andria, Puglia
+2025-11-14 16:26:40,509 - INFO - Total properties found in Andria, Puglia: 0
+2025-11-14 16:26:40,509 - INFO - Filtered to 0 matching properties
+2025-11-14 16:26:40,509 - INFO - Geocoding 0 properties for Andria, Puglia...
+2025-11-14 16:26:42,514 - INFO - Searching properties in Rodi Garganico, Puglia
+2025-11-14 16:26:42,515 - INFO - Using Selenium to scrape Immobiliare.it for Rodi Garganico, Puglia
+2025-11-14 16:26:56,102 - WARNING - Selenium failed for Immobiliare.it: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001046bbaa4 cxxbridge1$str$ptr + 2943380
+1   chromedriver                        0x00000001046b3760 cxxbridge1$str$ptr + 2909776
+2   chromedriver                        0x00000001041ca2bc _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74028
+3   chromedriver                        0x00000001042118ac _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366364
+4   chromedriver                        0x0000000104252d78 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633832
+5   chromedriver                        0x0000000104205f10 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318848
+6   chromedriver                        0x000000010467db98 cxxbridge1$str$ptr + 2689672
+7   chromedriver                        0x00000001046813ac cxxbridge1$str$ptr + 2704028
+8   chromedriver                        0x000000010465ea08 cxxbridge1$str$ptr + 2562296
+9   chromedriver                        0x0000000104681c84 cxxbridge1$str$ptr + 2706292
+10  chromedriver                        0x0000000104650304 cxxbridge1$str$ptr + 2503156
+11  chromedriver                        0x00000001046a1d58 cxxbridge1$str$ptr + 2837576
+12  chromedriver                        0x00000001046a1edc cxxbridge1$str$ptr + 2837964
+13  chromedriver                        0x00000001046b33b0 cxxbridge1$str$ptr + 2908832
+14  libsystem_pthread.dylib             0x000000019e5aec0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019e5a9b80 thread_start + 8
+. Trying requests...
+2025-11-14 16:26:56,234 - INFO - Found 0 properties from Immobiliare.it in Rodi Garganico, Puglia
+2025-11-14 16:26:56,234 - INFO - Using Selenium to scrape Casa.it for Rodi Garganico, Puglia
+2025-11-14 16:26:59,629 - INFO - Found 557 listings using selector: ['div', 'article']
+2025-11-14 16:26:59,631 - INFO - Found 0 properties from Casa.it in Rodi Garganico, Puglia
+2025-11-14 16:26:59,631 - INFO - Total properties found in Rodi Garganico, Puglia: 0
+2025-11-14 16:26:59,631 - INFO - Filtered to 0 matching properties
+2025-11-14 16:26:59,631 - INFO - Geocoding 0 properties for Rodi Garganico, Puglia...
+2025-11-14 16:27:01,647 - INFO - Report saved to property_report_20251114.html
+2025-11-14 16:27:01,851 - ERROR - Failed to send email report: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-78821e3a993sm19199867b3.20 - gsmtp')
+2025-11-14 16:27:01,851 - INFO - Property search completed
